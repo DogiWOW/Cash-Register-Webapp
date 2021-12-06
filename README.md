@@ -4,6 +4,6 @@ Projekt na zajęcia zawodowe do Mateusza Utraty
 
 # ToDo
 
-- kod html
-- kod css
+- drobne poprawki html
+- css
 - połączenie z bazą danych
