@@ -2,5 +2,8 @@
 
 Projekt na zajęcia zawodowe do Mateusza Utraty
 
-branch main
-test2
+# ToDo
+
+- kod html
+- kod css
+- połączenie z bazą danych
