@@ -1,10 +1,11 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Franklin Gothic Medium';
 }
 
 .section-gradient{
-    background-image: linear-gradient(to bottom right, blue, purple);
+    background: linear-gradient(to bottom right, blue, purple);
     background-repeat: no-repeat;
     background-size: auto;
     height: 100vh;
@@ -18,12 +19,41 @@
 .login-panel{
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 72.5vh;
     width: 40vh;
-    background-color: whitesmoke;
-    border: 1px cyan outset;
-    border-radius: 0.5%;
+    background-color:#0E5D7B;
+    background: radial-gradient(circle, whitesmoke, rgb(224, 216, 216));
+    border-radius: 10px;
+}
+
+.login-heading{
+    font-size: 2em;
+    text-align: center;
+}
+
+.login-email input, .login-password input, .login-submit input{
+    font-size: 1.5em;
+    width: 75%;
+    margin: 5% 7.5%;
+    padding: 10px 5%;
+    border: 1px rgb(143, 128, 128) solid;
+    border-radius: 30px;
+    outline: none;
+    background: lightgrey;
+}
+
+.login-submit input{
+    width: 70%;
+    margin: 10% 15%;
+    color: white;
+    transition: all 0.2s ease;
+    transform: scale(1) perspective(1px);
+    background:  linear-gradient(to right, blue, purple);
+}
+
+.login-submit input:hover{
+    transform: scale(1.1) perspective(1px)
 }
 
 
