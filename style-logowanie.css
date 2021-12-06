@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.section-gradient{
+    background-image: linear-gradient(to bottom right, blue, purple);
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100vh;
+}
+.section-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-panel{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 72.5vh;
+    width: 40vh;
+    background-color: whitesmoke;
+    border: 1px cyan outset;
+    border-radius: 0.5%;
+}
+
+
+
