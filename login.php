@@ -5,14 +5,14 @@
 	
 	if((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
 	{
-		header('Location: index.php');
+		header('Location: logowanie.php');
 		exit();
 	}
 	
 	$host = "localhost"; //adres hosta
 	$name = "root";	//nazwa użytkownika
 	$pass = "";	//hasło, jeśli nie ma zostawić puste
-	$dbname = "osadnicy"; //nazwa bazy danych
+	$dbname = "projekt"; //nazwa bazy danych
 	$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
 	
 	if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później."; //wypisz jeśli nie udało się połączyć z bd
@@ -32,17 +32,17 @@
 				
 				$_SESSION['zalogowany']=true; 
 				
-				$_SESSION['user']=$row['user']; //pobieranie do sesji danych z bd którę chcemy przechować
+				$_SESSION['imie']=$row['imie']; //pobieranie do sesji danych z bd którę chcemy przechować
 				
 				unset($_SESSION['blad']); //wyłączanie sesji blad jeśli udało nam się zalogować
-				header('Location: gra.php'); //strona dla zalogowanego użytkownika
+				header('Location: strona.php'); //strona dla zalogowanego użytkownika
 				
 				mysqli_free_result($wynik);
 			}
 			else //jeśli pobrało więcej niż jeden wiersz wykonaj
 			{
 				$_SESSION['blad'] = "Błąd logowania! Hasło lub login są nieprawidłowe.";
-				header('Location: index.php');
+				header('Location: logowanie.php');
 			}
 		}
 		
