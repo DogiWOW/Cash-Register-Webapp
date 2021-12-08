@@ -3,9 +3,9 @@
 	
 	session_start();
 	
-	if((!isset($_POST['login'])) || (!isset($_POST['haslo'])))
+	if((!isset($_POST['login-haslo'])) || (!isset($_POST['login-mail'])))
 	{
-		header('Location: logowanie.php');
+		header('Location: index.php');
 		exit();
 	}
 	
@@ -18,10 +18,10 @@
 	if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później."; //wypisz jeśli nie udało się połączyć z bd
 	else //jeśli się uda połączyć
 	{
-		$login = $_POST['login']; //pobieranie loginu z formularza
-		$haslo = $_POST['haslo']; //pobieranie hasła z formularza
+		$login = $_POST['login-mail']; //pobieranie loginu z formularza
+		$haslo = $_POST['login-haslo']; //pobieranie hasła z formularza
 		
-		$kwerenda = "SELECT * FROM uzytkownicy WHERE user='$login' AND pass='$haslo'"; //dobierania użytkownika według hasła i loginu za pomocą kwerendy SQL
+		$kwerenda = "SELECT * FROM uzytkownicy WHERE (email='$login' OR login='$login') AND haslo='$haslo';"; //dobierania użytkownika według hasła i loginu za pomocą kwerendy SQL
 		
 		if($wynik=mysqli_query($conn, $kwerenda)) //pobieranie danych według kwerendy $conn
 		{
@@ -35,14 +35,15 @@
 				$_SESSION['imie']=$row['imie']; //pobieranie do sesji danych z bd którę chcemy przechować
 				
 				unset($_SESSION['blad']); //wyłączanie sesji blad jeśli udało nam się zalogować
-				header('Location: strona.php'); //strona dla zalogowanego użytkownika
 				
 				mysqli_free_result($wynik);
+				
+				header('Location: menuKasFiskalnych.php'); //strona dla zalogowanego użytkownika
 			}
 			else //jeśli pobrało więcej niż jeden wiersz wykonaj
 			{
 				$_SESSION['blad'] = "Błąd logowania! Hasło lub login są nieprawidłowe.";
-				header('Location: logowanie.php');
+				header('Location: index.php');
 			}
 		}
 		

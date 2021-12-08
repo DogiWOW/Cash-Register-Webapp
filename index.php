@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -14,9 +17,9 @@
                 <h1 class="login-heading">Logowanie</h1>
             </div>
             <div class="login-content">
-                <form action="" method="post" class="login-form">
+                <form action="login.php" method="POST" class="login-form">
                     <div class="login-email">
-                     <input type="text" name="login-mail" placeholder="Email"><br>
+                     <input type="text" name="login-mail" placeholder="Email lub login"><br>
                     </div>
                     <div class="login-password">
                      <input type="password" name="login-haslo" placeholder="●●●●●●●●">
@@ -26,6 +29,10 @@
                     </div>
                 </form>
             </div>
+            <?php
+                if(isset($_SESSION['blad'])) echo $_SESSION['blad'];
+                session_unset();
+            ?>
         </div>
     </section>
 </body>
