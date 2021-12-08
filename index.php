@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style-logowanie.css">
+    <link rel="stylesheet" href="CSS/style-logowanie.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kasy - logowanie</title>
 </head>
@@ -16,6 +16,14 @@
             <div class="login-content">
                 <h1 class="login-heading">Logowanie</h1>
             </div>
+                <?php
+                    if(isset($_SESSION['blad'])){
+                        echo'<div class="login-error">';
+                         echo $_SESSION['blad'];
+                         echo'</div>';
+                    }
+                    session_unset();
+                ?>
             <div class="login-content">
                 <form action="login.php" method="POST" class="login-form">
                     <div class="login-email">
@@ -29,11 +37,8 @@
                     </div>
                 </form>
             </div>
-            <?php
-                if(isset($_SESSION['blad'])) echo $_SESSION['blad'];
-                session_unset();
-            ?>
         </div>
+
     </section>
 </body>
 </html>

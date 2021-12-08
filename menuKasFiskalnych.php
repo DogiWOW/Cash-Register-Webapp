@@ -12,6 +12,18 @@
     <title>Menu Kas Fiskalnych</title>
 </head>
 <body>
-    <a href='logout.php'>Działa!</a>
+    <h1>System Zarządzania Kasami Fiskalnymi</h1>
+    <a href='logout.php'>Wyloguj</a><br>
+    <a href='logout.php'>Lista kas fiskalnych</a><br>
+    <a href='logout.php'>Dodaj kasę fisklaną</a><br>
+    <a href='logout.php'>Klienci</a><br>
+    <?php
+    if($_SESSION['admin'] == 1){
+        echo "<a href='logout.php'>Użytkownicy (administrator)</a><br>";
+    }
+    ?>
+    <a href='logout.php'>Przeglądy</a><br>
+    <a href='logout.php'>Dodaj przegląd</a><br>
+    <a href='logout.php'>Wyślij maila do klienta</a><br>
 </body>
 </html>

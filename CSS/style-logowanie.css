@@ -11,31 +11,35 @@
     font-family: 'Franklin Gothic Medium';
 }
 
-.section-gradient{
+html, body{
+    min-height: 100%;
     background: linear-gradient(to bottom right, var(--section-gradient-1), var(--section-gradient-2));
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: auto;
-    height: 100vh;
 }
+
 .section-content{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 5%;
+    min-height: 100vh;
 }
 
 .login-panel{
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 72.5vh;
-    width: 40vh;
+    min-height: 60vh;
+    min-width: 37.5vh;
     background-color:#0E5D7B;
     background: radial-gradient(circle, var(--login-panel-gradient-1), var(--login-panel-gradient-2));
     border-radius: 10px;
 }
 
 .login-heading{
-    font-size: 2em;
+    font-size: 3rem;
     text-align: center;
 }
 
@@ -63,5 +67,15 @@
     transform: scale(1.1) perspective(1px)
 }
 
-
+.login-error{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-top: 1px red solid;
+    border-bottom: 1px red solid;
+    color: rgb(252, 63, 63);
+    height: 50px;
+    background-color: rgb(255, 63, 46, 0.3);
+}
 

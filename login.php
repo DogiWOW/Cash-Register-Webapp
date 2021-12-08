@@ -33,6 +33,7 @@
 				$_SESSION['zalogowany']=true; 
 				
 				$_SESSION['imie']=$row['imie']; //pobieranie do sesji danych z bd którę chcemy przechować
+				$_SESSION['admin']=$row['administrator'];
 				
 				unset($_SESSION['blad']); //wyłączanie sesji blad jeśli udało nam się zalogować
 				
@@ -42,7 +43,7 @@
 			}
 			else //jeśli pobrało więcej niż jeden wiersz wykonaj
 			{
-				$_SESSION['blad'] = "Błąd logowania! Hasło lub login są nieprawidłowe.";
+				$_SESSION['blad'] = "Błąd logowania!<br> Hasło lub login są nieprawidłowe.";
 				header('Location: index.php');
 			}
 		}
