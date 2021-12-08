@@ -1,3 +1,10 @@
+:root{
+    --section-gradient-1: rgb(204, 59, 59);
+    --section-gradient-2: purple;
+    --login-panel-gradient-1: whitesmoke;
+    --login-panel-gradient-2: white;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -5,7 +12,7 @@
 }
 
 .section-gradient{
-    background: linear-gradient(to bottom right, blue, purple);
+    background: linear-gradient(to bottom right, var(--section-gradient-1), var(--section-gradient-2));
     background-repeat: no-repeat;
     background-size: auto;
     height: 100vh;
@@ -23,7 +30,7 @@
     height: 72.5vh;
     width: 40vh;
     background-color:#0E5D7B;
-    background: radial-gradient(circle, whitesmoke, rgb(224, 216, 216));
+    background: radial-gradient(circle, var(--login-panel-gradient-1), var(--login-panel-gradient-2));
     border-radius: 10px;
 }
 
@@ -49,7 +56,7 @@
     color: white;
     transition: all 0.2s ease;
     transform: scale(1) perspective(1px);
-    background:  linear-gradient(to right, blue, purple);
+    background:  linear-gradient(to right, var(--section-gradient-1), var(--section-gradient-2));
 }
 
 .login-submit input:hover{
