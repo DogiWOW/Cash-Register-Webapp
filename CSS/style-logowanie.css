@@ -1,6 +1,6 @@
 :root{
-    --section-gradient-1: rgb(204, 59, 59);
-    --section-gradient-2: purple;
+    --section-gradient-1: #002b59;
+    --section-gradient-2: #005f8c;
     --login-panel-gradient-1: whitesmoke;
     --login-panel-gradient-2: white;
 }
@@ -72,10 +72,11 @@ html, body{
     align-items: center;
     text-align: center;
     justify-content: center;
-    border-top: 1px red solid;
-    border-bottom: 1px red solid;
+    margin-inline: 10px;
+    border: 1px red solid;
     color: rgb(252, 63, 63);
     height: 50px;
     background-color: rgb(255, 63, 46, 0.3);
+    border-radius: 5px;
 }
 
