@@ -10,3 +10,8 @@ Projekt na zajęcia zawodowe do Mateusza Utraty
 - integracja bazy danych z aplikacją internetową
 - filtrowanie kas fiskalnych zawartych w bazie
 - dodawanie kas fiskalnych do bazy
+
+# Logowanie
+- dodać margines przy błędzie logowania
+- zmienić czcionkę
+- zastanowić się nad alternatywą dla gradientowego tła
