@@ -1,0 +1,60 @@
+:root{
+    --bg-clr: #888888;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium';
+}
+
+html, body{
+    min-height: 100%;
+    margin: 5px;
+    background: var(--bg-clr);
+}
+
+#heading_user{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-bottom: 50px;
+}
+
+#heading{
+    font-size: 1.5rem;
+    grid-column-start: 2;
+    justify-self: center;
+    align-self: center;
+
+}
+
+#logged_user{
+    justify-self: end;
+    align-self: center;
+}
+
+.anchor_buttons{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10% 5%;
+}
+
+.anchor_buttons button{
+    min-height: 100px;
+    width: 70%;
+    font-size: 1.5rem;
+    justify-self: center;
+    align-self: center;
+    border-radius: 55px;
+    border: 1px grey solid;
+}
+
+.anchor_buttons button:last-child{
+    grid-column-start: span 2;
+    width: 45%;
+}
+
+.anchor_buttons a{
+    color: black;
+    text-decoration: none;
+}
