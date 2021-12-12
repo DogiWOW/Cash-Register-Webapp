@@ -1,20 +1,25 @@
 :root{
-    --bg-clr: #888888;
+    --section-gradient-1: #005f8c ;
+    --section-gradient-2: #00b9be ;
+    --sidebar-bg-clr: #002b59;
 }
 
 *{
     margin: 0;
     padding: 0;
     font-family: 'Franklin Gothic Medium';
+    color: white;
 }
 
 html, body{
     min-height: 100%;
     margin: 5px;
-    background: var(--bg-clr);
+    background: linear-gradient(to bottom right, var(--section-gradient-1), var(--section-gradient-2));
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
-#heading_user{
+#heading-user{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     margin-bottom: 50px;
@@ -28,14 +33,14 @@ html, body{
 
 }
 
-#logged_user{
+#logged-user{
     justify-self: end;
     align-self: center;
 }
-
+/*
 .anchor_buttons{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 10% 5%;
 }
 
@@ -48,13 +53,73 @@ html, body{
     border-radius: 55px;
     border: 1px grey solid;
 }
-
-.anchor_buttons button:last-child{
-    grid-column-start: span 2;
-    width: 45%;
+*/
+#menu-checkbox{
+    display: none;
 }
 
-.anchor_buttons a{
-    color: black;
+#menu-checkbox2{
+    position: absolute;
+    font-size: 45px;
+    left: 10px;
+    top: -1px;
+    z-index: 1;
+}
+#menu-checkbox:checked ~ #menu-checkbox2 i{
+    transform: rotate(0.25turn);
+    transition: 0.5s ease;
+}
+#menu-checkbox:not(:checked) ~ #menu-checkbox2 i{
+    transition: 0.5s ease;
+}
+
+.sidebar{
+    position: fixed;
+    width: 20%;
+    min-height: 100%;
+    background-color: var(--sidebar-bg-clr);
+}
+
+.sidebar-position{
+    top: 0;
+    left: -390px;
+    transition: 1s ease-in;
+}
+
+#menu-checkbox:checked ~ .sidebar{
+    left: 0;
+    transition: 1s ease-out;
+}
+
+.sidebar-header{
+    font-size: 2.5rem;
+    text-align: center;
+    border-bottom: 1px #0a5b81 solid;
+}
+
+.sidebar-content-underline li:after{
+    border-bottom: 1px #0a5b81 solid;
+    content: "";
+    display: block; 
+    margin: 0 auto; 
+    width: 80%; 
+    height: 1px;
+}
+
+.sidebar a:hover{
+    transform: translate(10px);
+    transition: 0.4s ease;
+}
+
+.sidebar i{
+    width: 12%;
+}
+
+.sidebar a{
+    display: block;
+    transition: 0.4s ease;
+    padding-block: 30px;
+    padding-left: 9%;
     text-decoration: none;
+    font-size: 1.8rem;
 }
