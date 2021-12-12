@@ -83,12 +83,12 @@ html, body{
 .sidebar-position{
     top: 0;
     left: -390px;
-    transition: 1s ease-in;
+    transition: 0.4s ease-in;
 }
 
 #menu-checkbox:checked ~ .sidebar{
     left: 0;
-    transition: 1s ease-out;
+    transition: 0.4s ease-out;
 }
 
 .sidebar-header{
