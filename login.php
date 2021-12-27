@@ -18,8 +18,8 @@
 	if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później."; //wypisz jeśli nie udało się połączyć z bd
 	else //jeśli się uda połączyć
 	{
-		$login = $_POST['login-mail']; //pobieranie loginu z formularza
-		$haslo = $_POST['login-haslo']; //pobieranie hasła z formularza
+		$login = htmlentities($_POST['login-mail'], ENT_QUOTES, "UTF-8"); //pobieranie loginu z formularza bez encji htmla
+		$haslo = htmlentities($_POST['login-haslo'], ENT_QUOTES, "UTF-8"); //pobieranie hasła z formularza tak samo
 		
 		$kwerenda = "SELECT * FROM uzytkownicy WHERE (email='$login' OR login='$login') AND haslo='$haslo';"; //dobierania użytkownika według hasła i loginu za pomocą kwerendy SQL
 		
@@ -33,6 +33,7 @@
 				$_SESSION['zalogowany']=true; 
 				
 				$_SESSION['imie']=$row['imie']; //pobieranie do sesji danych z bd którę chcemy przechować
+				$_SESSION['nazwisko']=$row['nazwisko'];
 				$_SESSION['admin']=$row['administrator'];
 				
 				unset($_SESSION['blad']); //wyłączanie sesji blad jeśli udało nam się zalogować

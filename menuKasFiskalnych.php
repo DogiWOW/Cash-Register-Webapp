@@ -13,6 +13,10 @@
 </head>
 <body>
     <h1>System Zarządzania Kasami Fiskalnymi</h1>
+	<?php 
+		echo "Witaj ".$_SESSION['imie']." ".$_SESSION['nazwisko']."<br />";
+
+	?>
     <a href='logout.php'>Wyloguj</a><br>
     <a href='logout.php'>Lista kas fiskalnych</a><br>
     <a href='logout.php'>Dodaj kasę fisklaną</a><br>
