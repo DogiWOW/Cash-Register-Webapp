@@ -1,6 +1,10 @@
 <?php
  session_start();
- 
+ if((!isset($_POST['login-haslo'])) || (!isset($_POST['login-mail'])))
+ {
+     header('Location: index.php');
+     exit();
+ }
 ?>
 
 <!DOCTYPE html>
