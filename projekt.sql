@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 02 Sty 2022, 11:07
+-- Czas generowania: 02 Sty 2022, 11:12
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -36,10 +36,10 @@ CREATE TABLE `klienci` (
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `pracownicy`
+-- Struktura tabeli dla tabeli `serwisanci`
 --
 
-CREATE TABLE `pracownicy` (
+CREATE TABLE `serwisanci` (
   `id` int(2) NOT NULL,
   `imie` varchar(20) NOT NULL,
   `nazwisko` varchar(20) NOT NULL,
@@ -50,10 +50,10 @@ CREATE TABLE `pracownicy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Zrzut danych tabeli `pracownicy`
+-- Zrzut danych tabeli `serwisanci`
 --
 
-INSERT INTO `pracownicy` (`id`, `imie`, `nazwisko`, `pesel`, `nip`, `pensja`, `staz`) VALUES
+INSERT INTO `serwisanci` (`id`, `imie`, `nazwisko`, `pesel`, `nip`, `pensja`, `staz`) VALUES
 (1, 'Tomasz', 'Kowalski', '81071243536', '125-523-41-63', 3100, 7),
 (2, 'Wiktoria', 'Orzechowska', '87021457426', '763-174-89-47', 4500, 3),
 (3, 'Patrycja', 'Nowak', '87081243447', '845-326-64-25', 3000, 5),
@@ -102,9 +102,9 @@ INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `login`, `haslo`, 
 --
 
 --
--- Indeksy dla tabeli `pracownicy`
+-- Indeksy dla tabeli `serwisanci`
 --
-ALTER TABLE `pracownicy`
+ALTER TABLE `serwisanci`
   ADD PRIMARY KEY (`id`);
 
 --
