@@ -1,0 +1,15 @@
+.content{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+.dane_bazadanych{
+    grid-column-start: 2;
+    justify-self: stretch;
+    align-self: center;
+    border-collapse: collapse;
+}
+.dane_bazadanych td,th{
+    border: 2px red solid;
+    padding: 10px;
+    text-align: center;
+}

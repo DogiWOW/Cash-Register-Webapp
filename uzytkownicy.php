@@ -12,21 +12,6 @@
 	$dbname = "projekt"; //nazwa bazy danych
 	$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
 
-    $conn = mysqli_connect($host, $name, $pass, $dbname);
-    if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
-    else
-    {
-        $kwerenda = "SELECT * FROM uzytkownicy";
-        if($wynik=mysqli_query($conn, $kwerenda))
-        {
-            while($row=mysqli_fetch_array($wynik))
-            {
-                echo '<b>Imie: </b>'.$row[1]." <b>Nazwisko: </b>".$row[2]." <b>Email: </b>".$row[3].' <a href="usuwanie_uzyt.php">USUŃ</a>'."<br />";
-            }
-            echo '<br /><a href="dodaj_uzyt.php">DODAJ UŻYTKOWNIKA</a>';
-        }
-        mysqli_close($conn);
-    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -36,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/e7af9736bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style-menu.css">
+    <link rel="stylesheet" href="CSS/style-dane.css">
     <title>Menu Kas Fiskalnych</title>
 </head>
 <body class="menu-preload">
@@ -48,6 +34,29 @@
                 Zalogowano jako: <?php echo $_SESSION['imie']; ?>
                 <a href='logout.php'>Wyloguj</a>
             </div>
+        </div>
+        <div class='content'>
+            <table class='dane_bazadanych'>
+                <tr>
+                    <th>Imie</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            <?php
+                if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
+                else{
+                    $kwerenda = "SELECT * FROM uzytkownicy";
+                    if($wynik=mysqli_query($conn, $kwerenda)){
+                    while($row=mysqli_fetch_array($wynik)){
+                        echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td><a href="usuwanie_uzyt.php">USUŃ</a></td></tr>';
+                    }
+                    echo '<tr><td colspan="4"><a href="dodaj_uzyt.php">DODAJ UŻYTKOWNIKA</a></td></tr>';
+                }
+                mysqli_close($conn);
+                }
+            ?>
+            </table>
         </div>
         <div>
             <input type="checkbox" id="menu-checkbox" onClick="checkState()">
