@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="CSS/style-menu.css">
     <title>Menu Kas Fiskalnych</title>
 </head>
-<body>
+<body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
@@ -28,19 +28,23 @@
             </div>
         </div>
         <div>
-            <input type="checkbox" id="menu-checkbox">
+            <input type="checkbox" id="menu-checkbox" onClick="checkState()">
             <label for="menu-checkbox" id="menu-checkbox2">
                 <i class="fas fa-bars"></i>
-            </label> 
+            </label>
+            <!-- Javascript - menu.js -->
+            <script src="JavaScript/menu.js"></script>
+            <!-- Javascript - menu.js -->  
             <div class='sidebar sidebar-position'>
                 <div class='sidebar-header'>Menu</div>
                 <ul class='sidebar-content-underline'>
-                    <li><a href='logout5.php'><i class="fas fa-cash-register"></i>Przeglądy</a></li>
-                    <li><a href='logout1.php'><i class="fas fa-list"></i>Lista kas fiskalnych</a></li>
-                    <li><a href='logout2.php'><i class="fas fa-plus"></i>Dodaj kasę fisklaną</a></li>
-                    <li><a href='logout3.php'><i class="far fa-calendar-plus"></i></i>Dodaj przegląd</a></li>
-                    <li><a href='logout4.php'><i class="fas fa-id-card"></i>Klienci</a></li>
-                    <li><a href='logout6.php'><i class="far fa-envelope"></i>Wyślij maila do klienta</a></li>
+                    <li><a href='menuKasFiskalnych.php'><i class="fas fa-bookmark"></i>Menu Główne</a></li>
+                    <li><a href='przeglady.php'><i class="fas fa-cash-register"></i>Przeglądy</a></li>
+                    <li><a href='listaKasFiskalnych.php'><i class="fas fa-list"></i>Lista kas fiskalnych</a></li>
+                    <li><a href='dodawanieKasFiskalnych.php'><i class="fas fa-plus"></i>Dodaj kasę fisklaną</a></li>
+                    <li><a href='dodawaniePrzegladow.php'><i class="far fa-calendar-plus"></i></i>Dodaj przegląd</a></li>
+                    <li><a href='klienci.php'><i class="fas fa-id-card"></i>Klienci</a></li>
+                    <li><a href='wyslijMaila.php'><i class="far fa-envelope"></i>Wyślij maila do klienta</a></li>
                     <?php 
                     if($_SESSION['admin'] == 1){
                         echo "<li><a href='uzytkownicy.php'><i class='fas fa-address-book'></i>Użytkownicy</a></li>";

@@ -4,6 +4,12 @@
     --sidebar-bg-clr: #002b59;
 }
 
+body.menu-preload *{
+    animation-duration: 0s !important;
+    -webkit-animation-duration: 0s !important;
+    transition:background-color 0s, opacity 0s, color 0s, width 0s, height 0s, padding 0s, margin 0s !important;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -70,7 +76,7 @@ html, body{
     transition: 0.4s ease-in;
 }
 
-#menu-checkbox:checked ~ .sidebar{
+#menu-checkbox:checked ~ .sidebar-position{
     left: 0;
     transition: 0.4s ease-out;
 }
