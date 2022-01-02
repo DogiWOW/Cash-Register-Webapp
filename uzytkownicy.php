@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="CSS/style-menu.css">
     <title>Menu Kas Fiskalnych</title>
 </head>
-<body>
+<body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
@@ -23,10 +23,13 @@
             </div>
         </div>
         <div>
-            <input type="checkbox" id="menu-checkbox">
+            <input type="checkbox" id="menu-checkbox" onClick="checkState()">
             <label for="menu-checkbox" id="menu-checkbox2">
                 <i class="fas fa-bars"></i>
-            </label> 
+            </label>
+            <!-- Javascript - menu.js -->
+            <script src="JavaScript/menu.js"></script>
+            <!-- Javascript - menu.js --> 
             <div class='sidebar sidebar-position'>
                 <div class='sidebar-header'>Menu</div>
                 <ul class='sidebar-content-underline'>
