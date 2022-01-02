@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Gru 2021, 15:42
+-- Czas generowania: 02 Sty 2022, 11:07
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -24,11 +24,55 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla tabeli `klienci`
+--
+
+CREATE TABLE `klienci` (
+  `id` int(2) NOT NULL,
+  `imie` varchar(15) NOT NULL,
+  `nazwisko` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `pracownicy`
+--
+
+CREATE TABLE `pracownicy` (
+  `id` int(2) NOT NULL,
+  `imie` varchar(20) NOT NULL,
+  `nazwisko` varchar(20) NOT NULL,
+  `pesel` varchar(11) NOT NULL,
+  `nip` varchar(13) NOT NULL,
+  `pensja` int(4) NOT NULL,
+  `staz` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `pracownicy`
+--
+
+INSERT INTO `pracownicy` (`id`, `imie`, `nazwisko`, `pesel`, `nip`, `pensja`, `staz`) VALUES
+(1, 'Tomasz', 'Kowalski', '81071243536', '125-523-41-63', 3100, 7),
+(2, 'Wiktoria', 'Orzechowska', '87021457426', '763-174-89-47', 4500, 3),
+(3, 'Patrycja', 'Nowak', '87081243447', '845-326-64-25', 3000, 5),
+(4, 'Piotr', 'Szewczyk', '83011243272', '647-852-15-36', 2400, 10),
+(5, 'Robert', 'Szymanski', '85050344216', '642-515-75-35', 4200, 1),
+(6, 'Marcin', 'Wisniewski', '75081761753', '857-534-73-15', 5000, 15),
+(7, 'Alicja', 'Kowalczyk', '89052153521', '647-378-83-58', 4700, 11),
+(8, 'Katarzyna', 'Zalewska', '90051653561', '745-743-84-43', 2200, 8),
+(9, 'Marcin', 'Ostrowski', '85110748914', '835-674-74-25', 4300, 7),
+(10, 'Kamil', 'Nowakowski', '83041548279', '647-184-37-29', 4600, 9);
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla tabeli `uzytkownicy`
 --
 
 CREATE TABLE `uzytkownicy` (
-  `id` int(11) NOT NULL,
+  `id` int(2) NOT NULL,
   `imie` varchar(15) DEFAULT NULL,
   `nazwisko` varchar(15) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
@@ -56,6 +100,12 @@ INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `login`, `haslo`, 
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indeksy dla tabeli `pracownicy`
+--
+ALTER TABLE `pracownicy`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `uzytkownicy`
