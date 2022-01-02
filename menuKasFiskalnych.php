@@ -1,5 +1,10 @@
 <?php
  session_start();
+ if((!isset($_SESSION['zalogowany'])) || ($_SESSION['zalogowany']!=true))
+	{
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -38,7 +43,7 @@
                     <li><a href='logout6.php'><i class="far fa-envelope"></i>Wyślij maila do klienta</a></li>
                     <?php 
                     if($_SESSION['admin'] == 1){
-                        echo "<li><a href='logout.php'><i class='fas fa-address-book'></i>Użytkownicy</a></li>";
+                        echo "<li><a href='uzytkownicy.php'><i class='fas fa-address-book'></i>Użytkownicy</a></li>";
                     }
                     ?>
                 </ul>
