@@ -21,14 +21,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/e7af9736bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style-menu.css">
-    <link rel="stylesheet" href="CSS/style-dane.css">
+    <link rel="stylesheet" href="CSS/style-strona.css">
     <title>Menu Kas Fiskalnych</title>
 </head>
 <body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
-                <h1>System Zarządzania Kasami Fiskalnymi</h1>
+                <h1>Użytkownicy</h1>
             </div>
             <div id='logged-user'>
                 Zalogowano jako: <?php echo $_SESSION['imie']; ?>
