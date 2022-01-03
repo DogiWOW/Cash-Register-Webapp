@@ -31,7 +31,7 @@
                 <h1>Użytkownicy</h1>
             </div>
             <div id='logged-user'>
-                Zalogowano jako: <?php echo $_SESSION['imie']; ?>
+                <i class="fas fa-user"></i>Zalogowano jako: <?php echo $_SESSION['imie']; ?>
                 <a href='logout.php'>Wyloguj</a>
             </div>
         </div>

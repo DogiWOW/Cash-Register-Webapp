@@ -3,7 +3,7 @@
 }
 
 #menu-checkbox2{
-    position: absolute;
+    position: fixed;
     font-size: 45px;
     left: 10px;
     top: -1px;
