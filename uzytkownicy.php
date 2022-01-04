@@ -1,6 +1,7 @@
 <?php
  session_start();
- if($_SESSION['admin']!=1)
+
+ if($_SESSION['admin']!=1) //jeśli użytkownik jest adminem
 	{
 		header('Location: index.php');
 		exit();
@@ -13,29 +14,23 @@
 
     function formularz_dodawania()
     {        
-        echo '<div id="formularz_dodawania">';
+        echo '<center><div id="formularz_dodawania">';
         echo '<form method="POST" action="dodaj_uzyt.php" />';
-        echo 'Imie: <input type="text" name="imie" /><br />';
-        if(isset($_SESSION['bladi']));
-        echo 'Nazwisko: <input type="text" name="nazwisko" /><br />';
-        if(isset($_SESSION['bladn']));
-        echo 'Login: <input type="text" name="login" /><br />';
-        if(isset($_SESSION['bladl']));
-        else unset($_SESSION['bladl']);
-        echo 'Hasło: <input type="text" name="haslo" /><br />';
-        if(isset($_SESSION['bladh']));
+        echo 'Imie: <input type="text" name="imie" />(min. 20 znaków)<br />';
+        echo 'Nazwisko: <input type="text" name="nazwisko" />(min. 28 znaków)<br />';
+        echo 'Login: <input type="text" name="login" />(min. 8 znaków)<br />';
+        echo 'Hasło: <input type="text" name="haslo" />(min. 8 znaków)<br />';
         echo 'Email: <input type="text" name="email" /><br />';
-        if(isset($_SESSION['blade']));
         echo '<input type="submit" value="Zapisz" /><br />';
-        echo '</form>';
-        if(isset($_SESSION['bladc'])) 
+        echo '</form></center>';
+        /*if(isset($_SESSION['bladc'])) 
         {
             echo $_SESSION['bladc'];
         }
         else
         {
             echo "Dane zostały zapisane";
-        }
+        }*/
         echo '</div>';
     }
     function usuwanie()
@@ -85,7 +80,7 @@
                     $kwerenda = "SELECT * FROM uzytkownicy WHERE administrator!=1";
                     if($wynik=mysqli_query($conn, $kwerenda)){
                     while($row=mysqli_fetch_array($wynik)){
-                        echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td><form method="POST"><input type="submit" value="USUŃ" name="usuwanie" /></form></td></tr>';
+                        echo '<tr><td>'.$row[0].'</td><td>'.$row[1].'</td><td>'.$row[2].'</td><td><form method="POST"><input type="submit" value="USUŃ" name="usuwanie" /></form></td></tr>';
                     }
                     echo '<tr><td colspan="4"><form method="POST"><input type="submit" value="Dodaj użytkownika" name="dodajuzytkownika"></form></td></tr>';
                 }
@@ -116,6 +111,11 @@
                 }
                 break;}
         }
+        if(isset($_SESSION['bladc'])) 
+        {
+            echo '<center>'.$_SESSION['bladc'].'</center>';
+        }
+
         ?>
         <div>
             <input type="checkbox" id="menu-checkbox" onClick="checkState()">

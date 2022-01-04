@@ -70,27 +70,45 @@
 		{
 			if(isset($_SESSION['bladh'])) unset($_SESSION['bladh']);
 		}
-		if($ok==true)
+		
+		//WPROWADZANIE DO BAZY DANYCH
+		if($ok==true) //JEŚLI WSZYSTKIE DANE SĄ POPRAWNE
 		{
-			//echo $haslo;
 			$host = "localhost"; //adres hosta
 			$name = "root";	//nazwa użytkownika
 			$pass = "";	//hasło, jeśli nie ma zostawić puste
 			$dbname = "projekt"; //nazwa bazy danych
 			$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
-
+			
 			if(mysqli_connect_errno())
 			{
 				header("Location: uzytkownicy.php");
-				$_SESSION['bladc']="Błąd połączenia z bazą danych";
+				$_SESSION['bladc']="Problemy techniczne. Prosimy spróbować później.";
 			}
 			else
 			{
-				if(isset($_SESSION['bladc'])) unset($_SESSION['bladc']);
-				echo $haslo;
+				if(isset($_SESSION['bladc'])) unset($_SESSION['bladc']); //wyłączanie błędu połączenia
+				echo "Imie: ".$imie.'<br />';
+				echo "Nazwisko: ".$nazwisko.'<br />';
+				echo "login: ".$login.'<br />';
+				echo "haslo: ".$haslo.'<br />';
+				echo "email: ".$email.'<br />';
+				$kwerenda="INSERT INTO uzytkownicy(imie, nazwisko, email, login, haslo) VALUES('$imie', '$nazwisko', '$email', '$login', '$haslo')";
+				if(mysqli_query($conn, $kwerenda))
+				{
+					header("Location: uzytkownicy.php");
+				}
+				else
+				{
+					echo "Chwilowe problemy";
+				}
+				mysqli_close($conn);
 			}
 		}
-		else echo "Coś poszło źle ".$haslo;
+		else
+		{
+			header("Location: uzytkownicy.php");
+		}
 	}
 ?>
 
