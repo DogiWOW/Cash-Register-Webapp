@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Sty 2022, 19:29
+-- Czas generowania: 04 Sty 2022, 20:59
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -211,6 +211,40 @@ ALTER TABLE `serwisanci`
 --
 ALTER TABLE `uzytkownicy`
   ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT dla zrzuconych tabel
+--
+
+--
+-- AUTO_INCREMENT dla tabeli `kasy`
+--
+ALTER TABLE `kasy`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT dla tabeli `klienci`
+--
+ALTER TABLE `klienci`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT dla tabeli `przeglady`
+--
+ALTER TABLE `przeglady`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT dla tabeli `serwisanci`
+--
+ALTER TABLE `serwisanci`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT dla tabeli `uzytkownicy`
+--
+ALTER TABLE `uzytkownicy`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
