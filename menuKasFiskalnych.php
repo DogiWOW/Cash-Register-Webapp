@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/e7af9736bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style-menu.css">
+    <link rel="stylesheet" href="CSS/style-strona.css">
     <title>Menu Kas Fiskalnych</title>
 </head>
 <body class="menu-preload">
@@ -23,7 +24,7 @@
                 <h1>System Zarządzania Kasami Fiskalnymi</h1>
             </div>
             <div id='logged-user'>
-                Zalogowano jako: <?php echo $_SESSION['imie']; ?>
+                <i class="fas fa-user"></i>Zalogowano jako: <?php echo $_SESSION['imie']; ?>
                 <a href='logout.php'>Wyloguj</a>
             </div>
         </div>
