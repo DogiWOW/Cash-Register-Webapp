@@ -5,7 +5,6 @@
 		header('Location: index.php');
 		exit();
 	}
-    
     $host = "localhost"; //adres hosta
 	$name = "root";	//nazwa użytkownika
 	$pass = "";	//hasło, jeśli nie ma zostawić puste
