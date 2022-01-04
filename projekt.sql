@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Sty 2022, 23:37
+-- Czas generowania: 04 Sty 2022, 23:46
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `kasy` (
   `id` int(2) NOT NULL,
   `data_fisk` date NOT NULL,
-  `kontrahent` int(2) NOT NULL,
+  `kontrahent` int(2) DEFAULT NULL,
   `nr_unikatowy` varchar(12) NOT NULL,
   `model` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,13 +42,13 @@ CREATE TABLE `kasy` (
 INSERT INTO `kasy` (`id`, `data_fisk`, `kontrahent`, `nr_unikatowy`, `model`) VALUES
 (1, '2021-10-19', 1, 'AEC 15343534', 'NANO ONLINE'),
 (2, '2021-09-17', 2, 'AED 73453524', 'POSPAY ONLINE'),
-(3, '2021-11-09', 3, 'AEB 74937402', 'ERGO'),
+(3, '2021-11-09', 3, 'AEB 74937402', 'ERGO E'),
 (4, '2021-08-18', 4, 'AED 82649106', 'NOVA'),
 (5, '2021-04-13', 5, 'AEC 63824857', 'DEON ONLINE'),
 (6, '2021-09-03', 6, 'BCE 92749527', 'K10 ONLINE'),
 (7, '2021-04-05', 7, 'BDA 85937589', 'NANO ONLINE'),
 (8, '2021-12-08', 8, 'ABE 84796724', 'POSPAY ONLINE'),
-(9, '2021-02-16', 9, 'BAC 83869205', 'DEON ONLINE'),
+(9, '2021-02-16', 9, 'BAC 83869205', 'DEON LAN E'),
 (10, '2021-09-29', 10, 'CEB 81067361', 'K10 ONLINE');
 
 -- --------------------------------------------------------
@@ -92,7 +92,7 @@ INSERT INTO `klienci` (`id`, `nip`, `nazwa`, `adres`, `miejscowosc`, `telefon`, 
 CREATE TABLE `przeglady` (
   `id` int(2) NOT NULL,
   `data` date NOT NULL,
-  `nr_kasy` varchar(12) NOT NULL,
+  `nr_kasy` varchar(12) DEFAULT NULL,
   `klient` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
