@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Sty 2022, 23:23
+-- Czas generowania: 04 Sty 2022, 23:31
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -31,24 +31,25 @@ CREATE TABLE `kasy` (
   `id` int(2) NOT NULL,
   `data_fisk` date NOT NULL,
   `kontrahent` int(2) NOT NULL,
-  `nr_unikatowy` varchar(12) NOT NULL
+  `nr_unikatowy` varchar(12) NOT NULL,
+  `model` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `kasy`
 --
 
-INSERT INTO `kasy` (`id`, `data_fisk`, `kontrahent`, `nr_unikatowy`) VALUES
-(1, '2021-10-19', 1, 'AEC 15343534'),
-(2, '2021-09-17', 2, 'AED 73453524'),
-(3, '2021-11-09', 3, 'AEB 74937402'),
-(4, '2021-08-18', 4, 'AED 82649106'),
-(5, '2021-04-13', 5, 'AEC 63824857'),
-(6, '2021-09-03', 6, 'BCE 92749527'),
-(7, '2021-04-05', 7, 'BDA 85937589'),
-(8, '2021-12-08', 8, 'ABE 84796724'),
-(9, '2021-02-16', 9, 'BAC 83869205'),
-(10, '2021-09-29', 10, 'CEB 81067361');
+INSERT INTO `kasy` (`id`, `data_fisk`, `kontrahent`, `nr_unikatowy`, `model`) VALUES
+(1, '2021-10-19', 1, 'AEC 15343534', 'NANO online'),
+(2, '2021-09-17', 2, 'AED 73453524', 'POSPAY online'),
+(3, '2021-11-09', 3, 'AEB 74937402', 'ERGO mobile'),
+(4, '2021-08-18', 4, 'AED 82649106', 'NOVA online'),
+(5, '2021-04-13', 5, 'AEC 63824857', 'DEON online'),
+(6, '2021-09-03', 6, 'BCE 92749527', 'K10 mobile'),
+(7, '2021-04-05', 7, 'BDA 85937589', 'NANO online'),
+(8, '2021-12-08', 8, 'ABE 84796724', 'POSPAY online'),
+(9, '2021-02-16', 9, 'BAC 83869205', 'DEON online'),
+(10, '2021-09-29', 10, 'CEB 81067361', 'K10 mobile');
 
 -- --------------------------------------------------------
 
