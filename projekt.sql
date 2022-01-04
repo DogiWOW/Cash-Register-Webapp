@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Sty 2022, 23:46
+-- Czas generowania: 04 Sty 2022, 23:50
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -92,8 +92,8 @@ INSERT INTO `klienci` (`id`, `nip`, `nazwa`, `adres`, `miejscowosc`, `telefon`, 
 CREATE TABLE `przeglady` (
   `id` int(2) NOT NULL,
   `data` date NOT NULL,
-  `nr_kasy` varchar(12) DEFAULT NULL,
-  `klient` int(2) NOT NULL
+  `nr_kasy` varchar(12) NOT NULL,
+  `klient` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
