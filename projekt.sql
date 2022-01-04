@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Czas generowania: 04 Sty 2022, 20:59
-=======
--- Czas generowania: 04 Sty 2022, 19:29
->>>>>>> uzytkownicy
+-- Czas generowania: 04 Sty 2022, 22:38
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -34,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `kasy` (
   `id` int(2) NOT NULL,
   `data_fisk` date NOT NULL,
-  `kontrahent` varchar(20) NOT NULL,
+  `kontrahent` int(2) NOT NULL,
   `nip` varchar(13) NOT NULL,
   `telefon` int(9) NOT NULL,
   `nr_unikatowy` varchar(12) NOT NULL,
@@ -46,16 +42,16 @@ CREATE TABLE `kasy` (
 --
 
 INSERT INTO `kasy` (`id`, `data_fisk`, `kontrahent`, `nip`, `telefon`, `nr_unikatowy`, `model`) VALUES
-(1, '2021-10-19', 'Marcin Piotrowski', '845-326-64-25', 756274366, 'AEC 15343534', 'NANO online'),
-(2, '2021-09-17', 'Ewelina Kowal', '763-174-89-47', 567857856, 'AED 73453524', 'POSPAY online'),
-(3, '2021-11-09', 'Piotr Ostrowski', '125-523-41-63', 782834646, 'AEB 74937402', 'ERGO mobile'),
-(4, '2021-08-18', 'Gabriela Porzeczka', '642-515-75-35', 489248725, 'AED 82649106', 'K1 online'),
-(5, '2021-04-13', 'Wiktor Olechowski', '593-248-42-36', 582648560, 'AEC 63824857', 'DEON online'),
-(6, '2021-09-03', 'Mateusz Wiśniewski', '425-642-15-23', 639273947, 'BCE 92749527', 'K10 mobile'),
-(7, '2021-04-05', 'Igor Walczak', '534-174-32-26', 592758395, 'BDA 85937589', 'NANO online'),
-(8, '2021-12-08', 'Adam Zawadzki', '314-215-21-46', 858275925, 'ABE 84796724', 'POSPAY online'),
-(9, '2021-02-16', 'Urszula Andrzejewska', '514-632-37-25', 853928548, 'BAC 83869205', 'DEON online'),
-(10, '2021-09-29', 'Maciej Nowak', '327-324-65-21', 829473183, 'CEB 81067361', 'K10 mobile');
+(1, '2021-10-19', 1, '845-326-64-25', 756274366, 'AEC 15343534', 'NANO online'),
+(2, '2021-09-17', 2, '763-174-89-47', 567857856, 'AED 73453524', 'POSPAY online'),
+(3, '2021-11-09', 3, '125-523-41-63', 782834646, 'AEB 74937402', 'ERGO mobile'),
+(4, '2021-08-18', 4, '642-515-75-35', 489248725, 'AED 82649106', 'K1 online'),
+(5, '2021-04-13', 5, '593-248-42-36', 582648560, 'AEC 63824857', 'DEON online'),
+(6, '2021-09-03', 6, '425-642-15-23', 639273947, 'BCE 92749527', 'K10 mobile'),
+(7, '2021-04-05', 7, '534-174-32-26', 592758395, 'BDA 85937589', 'NANO online'),
+(8, '2021-12-08', 8, '314-215-21-46', 858275925, 'ABE 84796724', 'POSPAY online'),
+(9, '2021-02-16', 9, '514-632-37-25', 853928548, 'BAC 83869205', 'DEON online'),
+(10, '2021-09-29', 10, '327-324-65-21', 829473183, 'CEB 81067361', 'K10 mobile');
 
 -- --------------------------------------------------------
 
@@ -71,7 +67,6 @@ CREATE TABLE `klienci` (
   `miejscowosc` varchar(25) NOT NULL,
   `telefon` int(9) NOT NULL,
   `email` varchar(20) NOT NULL
-<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -99,63 +94,27 @@ INSERT INTO `klienci` (`id`, `nip`, `nazwa`, `adres`, `miejscowosc`, `telefon`, 
 CREATE TABLE `przeglady` (
   `id` int(2) NOT NULL,
   `data` date NOT NULL,
-  `kasa` varchar(12) NOT NULL,
-  `klient` varchar(20) NOT NULL,
+  `nr_kasy` varchar(12) NOT NULL,
+  `klient` int(2) NOT NULL,
   `telefon` int(9) NOT NULL,
   `email` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
-=======
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Zrzut danych tabeli `klienci`
---
-
-INSERT INTO `klienci` (`id`, `nip`, `nazwa`, `adres`, `miejscowosc`, `telefon`, `email`) VALUES
-(1, '845-326-64-25', 'Marcin Piotrowski', 'Zakopianska 15', 'Kraków', 756274366, 'piotro131@onet.pl'),
-(2, '763-174-89-47', 'Ewelina Kowal', 'Lwowska 7', 'Wadowice', 567857856, 'kowal5233@wp.pl'),
-(3, '125-523-41-63', 'Piotr Ostrowski', 'Kolejowa 20', 'Skawina', 782834646, 'ostrow6421@gmail.com'),
-(4, '642-515-75-35', 'Gabriela Porzeczka', 'Floriańska 22', 'Andrychów', 489248725, 'porze754@o2.pl'),
-(5, '593-248-42-36', 'Wiktor Olechowski', 'Piastowska 8', 'Zator', 582648560, 'olec234@interia.pl'),
-(6, '425-642-15-23', 'Mateusz Wiśniewski', 'Słowackiego 19', 'Myślenice', 639273947, 'wisni213@gmail.com'),
-(7, '534-174-32-26', 'Igor Walczak', 'Jagiellońska 27', 'Kalwaria Zebrzydowska', 592758395, 'walcza5234@o2.pl'),
-(8, '314-215-21-46', 'Adam Zawadzki', 'Złota 32', 'Kraków', 858275925, 'zawad24@onet.pl'),
-(9, '514-632-37-25', 'Urszula Andrzejewska', 'Zielona 8', 'Sucha Beskidzka', 853928548, 'urszuand321@wp.pl'),
-(10, '327-324-65-21', 'Maciej Nowak', 'Spadzista 17', 'Wadowice', 829473183, 'nowa412@interia.pl');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `przeglady`
---
-
-CREATE TABLE `przeglady` (
-  `id` int(2) NOT NULL,
-  `data` date NOT NULL,
-  `kasa` varchar(12) NOT NULL,
-  `klient` varchar(20) NOT NULL,
-  `telefon` int(9) NOT NULL,
-  `email` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
->>>>>>> uzytkownicy
 -- Zrzut danych tabeli `przeglady`
 --
 
-INSERT INTO `przeglady` (`id`, `data`, `kasa`, `klient`, `telefon`, `email`) VALUES
-(1, '2022-10-19', 'AEC 15343534', 'Marcin Piotrowski', 756274366, 'piotro131@onet.pl'),
-(2, '2022-09-17', 'AED 73453524', 'Ewelina Kowal', 567857856, 'kowal5233@wp.pl'),
-(3, '2022-11-09', 'AEB 74937402', 'Piotr Ostrowski', 782834646, 'ostrow6421@gmail.com'),
-(4, '2022-08-18', 'AED 82649106', 'Gabriela Porzeczka', 489248725, 'porze754@o2.pl'),
-(5, '2022-04-13', 'AEC 63824857', 'Wiktor Olechowski', 582648560, 'olec234@interia.pl'),
-(6, '2022-09-03', 'BCE 92749527', 'Mateusz Wiśniewski', 639273947, 'wisni213@gmail.com'),
-(7, '2022-04-05', 'BDA 85937589', 'Igor Walczak', 592758395, 'walcza5234@o2.pl'),
-(8, '2022-12-08', 'ABE 84796724', 'Adam Zawadzki', 858275925, 'zawad24@onet.pl'),
-(9, '2022-02-16', 'BAC 83869205', 'Urszula Andrzejewska', 853928548, 'urszuand321@wp.pl'),
-(10, '2022-09-29', 'CEB 81067361', 'Maciej Nowak', 829473183, 'nowa412@interia.pl');
+INSERT INTO `przeglady` (`id`, `data`, `nr_kasy`, `klient`, `telefon`, `email`) VALUES
+(1, '2022-10-19', 'KF001', 1, 756274366, 'piotro131@onet.pl'),
+(2, '2022-09-17', 'KF002', 2, 567857856, 'kowal5233@wp.pl'),
+(3, '2022-11-09', 'KF003', 3, 782834646, 'ostrow6421@gmail.com'),
+(4, '2022-08-18', 'KF004', 4, 489248725, 'porze754@o2.pl'),
+(5, '2022-04-13', 'KF005', 5, 582648560, 'olec234@interia.pl'),
+(6, '2022-09-03', 'KF006', 6, 639273947, 'wisni213@gmail.com'),
+(7, '2022-04-05', 'KF007', 7, 592758395, 'walcza5234@o2.pl'),
+(8, '2022-12-08', 'KF008', 8, 858275925, 'zawad24@onet.pl'),
+(9, '2022-02-16', 'KF009', 9, 853928548, 'urszuand321@wp.pl'),
+(10, '2022-09-29', 'KF010', 10, 829473183, 'nowa412@interia.pl');
 
 -- --------------------------------------------------------
 
@@ -176,16 +135,16 @@ CREATE TABLE `serwisanci` (
 --
 
 INSERT INTO `serwisanci` (`id`, `imie`, `nazwisko`, `telefon`, `nr_kasy`) VALUES
-(1, 'Tomasz', 'Kowalski', 423151357, 'AEC 15343534'),
-(2, 'Wiktoria', 'Orzechowska', 624624629, 'AED 73453524'),
-(3, 'Patrycja', 'Nowak', 785346125, 'AEB 74937402'),
-(4, 'Piotr', 'Szewczyk', 626546462, 'AED 82649106'),
-(5, 'Robert', 'Szymański', 743462565, 'AEC 63824857'),
-(6, 'Marcin', 'Wiśniewski', 24846356, 'BCE 92749527'),
-(7, 'Alicja', 'Kowalczyk', 273456738, 'BDA 85937589'),
-(8, 'Katarzyna', 'Zalewska', 412554535, 'ABE 84796724'),
-(9, 'Marcin', 'Ostrowski', 436726462, 'BAC 83869205'),
-(10, 'Kamil', 'Nowakowski', 645624626, 'CEB 81067361');
+(1, 'Tomasz', 'Kowalski', 423151357, 'KF001'),
+(2, 'Wiktoria', 'Orzechowska', 624624629, 'KF002'),
+(3, 'Patrycja', 'Nowak', 785346125, 'KF003'),
+(4, 'Piotr', 'Szewczyk', 626546462, 'KF004'),
+(5, 'Robert', 'Szymański', 743462565, 'KF005'),
+(6, 'Marcin', 'Wiśniewski', 248463561, 'KF006'),
+(7, 'Alicja', 'Kowalczyk', 273456738, 'KF007'),
+(8, 'Katarzyna', 'Zalewska', 412554535, 'KF008'),
+(9, 'Marcin', 'Ostrowski', 436726462, 'KF009'),
+(10, 'Kamil', 'Nowakowski', 645624626, 'KF010');
 
 -- --------------------------------------------------------
 
@@ -227,7 +186,8 @@ INSERT INTO `uzytkownicy` (`id`, `imie`, `nazwisko`, `email`, `login`, `haslo`, 
 -- Indeksy dla tabeli `kasy`
 --
 ALTER TABLE `kasy`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `kontrahent` (`kontrahent`);
 
 --
 -- Indeksy dla tabeli `klienci`
@@ -239,7 +199,8 @@ ALTER TABLE `klienci`
 -- Indeksy dla tabeli `przeglady`
 --
 ALTER TABLE `przeglady`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `klient` (`klient`);
 
 --
 -- Indeksy dla tabeli `serwisanci`
@@ -286,6 +247,22 @@ ALTER TABLE `serwisanci`
 --
 ALTER TABLE `uzytkownicy`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Ograniczenia dla zrzutów tabel
+--
+
+--
+-- Ograniczenia dla tabeli `kasy`
+--
+ALTER TABLE `kasy`
+  ADD CONSTRAINT `kasy_ibfk_1` FOREIGN KEY (`kontrahent`) REFERENCES `klienci` (`id`);
+
+--
+-- Ograniczenia dla tabeli `przeglady`
+--
+ALTER TABLE `przeglady`
+  ADD CONSTRAINT `przeglady_ibfk_1` FOREIGN KEY (`klient`) REFERENCES `klienci` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
