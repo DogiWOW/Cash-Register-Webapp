@@ -35,6 +35,8 @@
 				$_SESSION['imie']=$row['imie']; //pobieranie do sesji danych z bd którę chcemy przechować
 				$_SESSION['nazwisko']=$row['nazwisko'];
 				$_SESSION['admin']=$row['administrator'];
+				$_SESSION['login']=$row['login'];
+				$_SESSION['email']=$row['email'];
 				
 				unset($_SESSION['blad']); //wyłączanie sesji blad jeśli udało nam się zalogować
 				
