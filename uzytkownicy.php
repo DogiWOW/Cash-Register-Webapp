@@ -11,6 +11,31 @@
 	$dbname = "projekt"; //nazwa bazy danych
 	$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
 
+    function formularz_dodawania()
+    {
+        echo '<div id="formularz_dodawania">';
+        echo '<form action="dodaj_uzyt.php" method="POST" />';
+        echo 'Imie: <input type="text" name="imie" />';
+        if(isset($_SESSION['bladi']));
+        echo 'Nazwisko: <input type="text" name="nazwisko" />';
+        if(isset($_SESSION['bladn']));
+        echo 'Login: <input type="text" name="login" />';
+        if(isset($_SESSION['bladl']));
+        else unset($_SESSION['bladl']);
+        echo 'Hasło: <input type="text" name="haslo" />';
+        if(isset($_SESSION['bladh']));
+        echo 'Email: <input type="text" name="email" />';
+        if(isset($_SESSION['blade']));
+        echo '<input type="submit" value="Zapisz" />';
+        echo '</form>';
+        if(isset($_SESSION['bladw'])) echo $_SESSION['bladw'];
+        echo '</div>';
+    }
+    
+    function usuwanie()
+    {
+        echo "Działa!";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -45,18 +70,41 @@
             <?php
                 if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
                 else{
-                    $kwerenda = "SELECT * FROM uzytkownicy";
+                    $kwerenda = "SELECT * FROM uzytkownicy WHERE administrator!=1";
                     if($wynik=mysqli_query($conn, $kwerenda)){
                     while($row=mysqli_fetch_array($wynik)){
-                        echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td><a href="usuwanie_uzyt.php">USUŃ</a></td></tr>';
+                        echo '<tr><td>'.$row[1].'</td><td>'.$row[2].'</td><td>'.$row[3].'</td><td><form method="POST"><input type="submit" value="USUŃ" name="usuwanie" /></form></td></tr>';
                     }
-                    echo '<tr><td colspan="4"><a href="dodaj_uzyt.php">DODAJ UŻYTKOWNIKA</a></td></tr>';
+                    echo '<tr><td colspan="4"><form method="POST"><input type="submit" value="Dodaj użytkownika" name="dodajuzytkownika"></form></td></tr>';
                 }
                 mysqli_close($conn);
                 }
             ?>
             </table>
         </div>
+        <?php 
+        $polecenie='';
+        if(isset($_POST['dodajuzytkownika']))
+        {
+            $polecenie=$_POST['dodajuzytkownika'];
+        }
+        if(isset($_POST['usuwanie']))
+        {
+            $polecenie=$_POST['usuwanie'];
+        }
+        switch($polecenie)
+        {
+            case 'Dodaj użytkownika': formularz_dodawania(); break;
+            case 'USUŃ':  {
+                if(isset($_POST['dodajuzytkownika']))
+                {
+                    usuwanie();
+                    formularz_dodawania();
+                }
+                
+                break;}
+        }
+        ?>
         <div>
             <input type="checkbox" id="menu-checkbox" onClick="checkState()">
             <label for="menu-checkbox" id="menu-checkbox2">
@@ -76,7 +124,8 @@
                     <li><a href='klienci.php'><i class="fas fa-id-card"></i>Klienci</a></li>
                     <li><a href='wyslijMaila.php'><i class="far fa-envelope"></i>Wyślij maila do klienta</a></li>
                     <?php 
-                    if($_SESSION['admin'] == 1){
+                    if($_SESSION['admin'] == 1)
+                    {
                         echo "<li><a href='uzytkownicy.php'><i class='fas fa-address-book'></i>Użytkownicy</a></li>";
                     }
                     ?>

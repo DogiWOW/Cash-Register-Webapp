@@ -70,22 +70,9 @@
 		{
 			if(isset($_SESSION['bladh'])) unset($_SESSION['bladh']);
 		}
+		if($ok==true) echo "Wszystko poprawnie";
+		else echo "Coś poszło źle";
 	}
 ?>
-<!DOCTYPE HTML>
-<html lang="pl">
-<head>
-	<title>Dodawanie nowego użytkownika</title>
-	<meta charset="UTF-8" />
-</head>
-<body>
-	<form method="POST">
-		Imie: <input type="text" name="imie"/><?php if(isset($_SESSION['bladi'])) echo$_SESSION['bladi'];  ?>(może składać się z maks 20 polskich znaków)<br />
-		Nazwisko: <input type="text" name="nazwisko"/><?php if(isset($_SESSION['bladn'])) echo$_SESSION['bladn'];  ?> (może składać się z maks 28 polskich znaków)<br />
-		Email: <input type="text" name="email"/><?php if(isset($_SESSION['blade'])) echo$_SESSION['blade'];  ?><br />
-		Login: <input type="text" name="login"/><?php if(isset($_SESSION['bladl'])) echo$_SESSION['bladl'];  ?> (minimum 8 liter)<br />
-		Hasło: <input type="text" name="haslo"/><?php if(isset($_SESSION['bladh'])) echo$_SESSION['bladh'];  ?>(minimum 8 liter)<br />
-		<input type="submit" value="Dodaj" />
-	</form>
-</body>
-</html>
+
+
