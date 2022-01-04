@@ -23,17 +23,23 @@
     <link rel="stylesheet" href="CSS/style-menu.css">
     <link rel="stylesheet" href="CSS/style-strona.css">
     <title>Menu Kas Fiskalnych</title>
+    <script src="Javascript/user-details.js" defer></script>
 </head>
 <body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
-                <h1>Użytkownicy</h1>
+                <h1>System Zarządzania Kasami Fiskalnymi</h1>
             </div>
             <div id='logged-user'>
-                <i class="fas fa-user"></i>Zalogowano jako: <?php echo $_SESSION['imie']; ?>
-                <a href='logout.php'>Wyloguj</a>
+            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
+                
             </div>
+        </div>
+        <!-- Znikające okna początek -->
+        <div id="user-details-window">
+            <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
+            <a href='logout.php'>Wyloguj</a>
         </div>
         <div class='content'>
             <table class='dane_bazadanych'>
