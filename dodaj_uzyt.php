@@ -41,7 +41,7 @@
 		$email=$_POST['email'];
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
-			$_SESSION['blade']="BŁĄD PRZY WPISYWANIU EMAILA!";
+			$_SESSION['blade']="NIEPRAWIDŁOWY EMAIL!";
 			$ok=false;
 		}
 		else
@@ -70,22 +70,46 @@
 		{
 			if(isset($_SESSION['bladh'])) unset($_SESSION['bladh']);
 		}
+		
+		//WPROWADZANIE DO BAZY DANYCH
+		if($ok==true) //JEŚLI WSZYSTKIE DANE SĄ POPRAWNE
+		{
+			$host = "localhost"; //adres hosta
+			$name = "root";	//nazwa użytkownika
+			$pass = "";	//hasło, jeśli nie ma zostawić puste
+			$dbname = "projekt"; //nazwa bazy danych
+			$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
+			
+			if(mysqli_connect_errno())
+			{
+				header("Location: uzytkownicy.php");
+				$_SESSION['bladc']="Problemy techniczne. Prosimy spróbować później.";
+			}
+			else
+			{
+				if(isset($_SESSION['bladc'])) unset($_SESSION['bladc']); //wyłączanie błędu połączenia
+				echo "Imie: ".$imie.'<br />';
+				echo "Nazwisko: ".$nazwisko.'<br />';
+				echo "login: ".$login.'<br />';
+				echo "haslo: ".$haslo.'<br />';
+				echo "email: ".$email.'<br />';
+				$kwerenda="INSERT INTO uzytkownicy(imie, nazwisko, email, login, haslo) VALUES('$imie', '$nazwisko', '$email', '$login', '$haslo')";
+				if(mysqli_query($conn, $kwerenda))
+				{
+					header("Location: uzytkownicy.php");
+				}
+				else
+				{
+					echo "Chwilowe problemy";
+				}
+				mysqli_close($conn);
+			}
+		}
+		else
+		{
+			header("Location: uzytkownicy.php");
+		}
 	}
 ?>
-<!DOCTYPE HTML>
-<html lang="pl">
-<head>
-	<title>Dodawanie nowego użytkownika</title>
-	<meta charset="UTF-8" />
-</head>
-<body>
-	<form method="POST">
-		Imie: <input type="text" name="imie"/><?php if(isset($_SESSION['bladi'])) echo$_SESSION['bladi'];  ?>(może składać się z maks 20 polskich znaków)<br />
-		Nazwisko: <input type="text" name="nazwisko"/><?php if(isset($_SESSION['bladn'])) echo$_SESSION['bladn'];  ?> (może składać się z maks 28 polskich znaków)<br />
-		Email: <input type="text" name="email"/><?php if(isset($_SESSION['blade'])) echo$_SESSION['blade'];  ?><br />
-		Login: <input type="text" name="login"/><?php if(isset($_SESSION['bladl'])) echo$_SESSION['bladl'];  ?> (minimum 8 liter)<br />
-		Hasło: <input type="text" name="haslo"/><?php if(isset($_SESSION['bladh'])) echo$_SESSION['bladh'];  ?>(minimum 8 liter)<br />
-		<input type="submit" value="Dodaj" />
-	</form>
-</body>
-</html>
+
+

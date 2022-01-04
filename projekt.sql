@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Czas generowania: 04 Sty 2022, 20:59
+=======
+-- Czas generowania: 04 Sty 2022, 19:29
+>>>>>>> uzytkownicy
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -67,6 +71,7 @@ CREATE TABLE `klienci` (
   `miejscowosc` varchar(25) NOT NULL,
   `telefon` int(9) NOT NULL,
   `email` varchar(20) NOT NULL
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -101,6 +106,42 @@ CREATE TABLE `przeglady` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+=======
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Zrzut danych tabeli `klienci`
+--
+
+INSERT INTO `klienci` (`id`, `nip`, `nazwa`, `adres`, `miejscowosc`, `telefon`, `email`) VALUES
+(1, '845-326-64-25', 'Marcin Piotrowski', 'Zakopianska 15', 'Kraków', 756274366, 'piotro131@onet.pl'),
+(2, '763-174-89-47', 'Ewelina Kowal', 'Lwowska 7', 'Wadowice', 567857856, 'kowal5233@wp.pl'),
+(3, '125-523-41-63', 'Piotr Ostrowski', 'Kolejowa 20', 'Skawina', 782834646, 'ostrow6421@gmail.com'),
+(4, '642-515-75-35', 'Gabriela Porzeczka', 'Floriańska 22', 'Andrychów', 489248725, 'porze754@o2.pl'),
+(5, '593-248-42-36', 'Wiktor Olechowski', 'Piastowska 8', 'Zator', 582648560, 'olec234@interia.pl'),
+(6, '425-642-15-23', 'Mateusz Wiśniewski', 'Słowackiego 19', 'Myślenice', 639273947, 'wisni213@gmail.com'),
+(7, '534-174-32-26', 'Igor Walczak', 'Jagiellońska 27', 'Kalwaria Zebrzydowska', 592758395, 'walcza5234@o2.pl'),
+(8, '314-215-21-46', 'Adam Zawadzki', 'Złota 32', 'Kraków', 858275925, 'zawad24@onet.pl'),
+(9, '514-632-37-25', 'Urszula Andrzejewska', 'Zielona 8', 'Sucha Beskidzka', 853928548, 'urszuand321@wp.pl'),
+(10, '327-324-65-21', 'Maciej Nowak', 'Spadzista 17', 'Wadowice', 829473183, 'nowa412@interia.pl');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `przeglady`
+--
+
+CREATE TABLE `przeglady` (
+  `id` int(2) NOT NULL,
+  `data` date NOT NULL,
+  `kasa` varchar(12) NOT NULL,
+  `klient` varchar(20) NOT NULL,
+  `telefon` int(9) NOT NULL,
+  `email` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+>>>>>>> uzytkownicy
 -- Zrzut danych tabeli `przeglady`
 --
 
