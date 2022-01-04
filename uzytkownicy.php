@@ -12,26 +12,32 @@
 	$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
 
     function formularz_dodawania()
-    {
+    {        
         echo '<div id="formularz_dodawania">';
-        echo '<form action="dodaj_uzyt.php" method="POST" />';
-        echo 'Imie: <input type="text" name="imie" />';
+        echo '<form method="POST" action="dodaj_uzyt.php" />';
+        echo 'Imie: <input type="text" name="imie" /><br />';
         if(isset($_SESSION['bladi']));
-        echo 'Nazwisko: <input type="text" name="nazwisko" />';
+        echo 'Nazwisko: <input type="text" name="nazwisko" /><br />';
         if(isset($_SESSION['bladn']));
-        echo 'Login: <input type="text" name="login" />';
+        echo 'Login: <input type="text" name="login" /><br />';
         if(isset($_SESSION['bladl']));
         else unset($_SESSION['bladl']);
-        echo 'Hasło: <input type="text" name="haslo" />';
+        echo 'Hasło: <input type="text" name="haslo" /><br />';
         if(isset($_SESSION['bladh']));
-        echo 'Email: <input type="text" name="email" />';
+        echo 'Email: <input type="text" name="email" /><br />';
         if(isset($_SESSION['blade']));
-        echo '<input type="submit" value="Zapisz" />';
+        echo '<input type="submit" value="Zapisz" /><br />';
         echo '</form>';
-        if(isset($_SESSION['bladw'])) echo $_SESSION['bladw'];
+        if(isset($_SESSION['bladc'])) 
+        {
+            echo $_SESSION['bladc'];
+        }
+        else
+        {
+            echo "Dane zostały zapisane";
+        }
         echo '</div>';
     }
-    
     function usuwanie()
     {
         echo "Działa!";
@@ -92,16 +98,16 @@
         {
             $polecenie=$_POST['usuwanie'];
         }
+        //if(isset($_SESSION['bladc'])) echo $_SESSION['bladc'];
+        //else(unset($_SESSION['bladc']));
         switch($polecenie)
         {
             case 'Dodaj użytkownika': formularz_dodawania(); break;
-            case 'USUŃ':  {
+            case 'USUŃ':  { usuwanie();
                 if(isset($_POST['dodajuzytkownika']))
                 {
-                    usuwanie();
                     formularz_dodawania();
                 }
-                
                 break;}
         }
         ?>

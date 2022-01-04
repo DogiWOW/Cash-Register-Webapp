@@ -41,7 +41,7 @@
 		$email=$_POST['email'];
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
-			$_SESSION['blade']="BŁĄD PRZY WPISYWANIU EMAILA!";
+			$_SESSION['blade']="NIEPRAWIDŁOWY EMAIL!";
 			$ok=false;
 		}
 		else
@@ -70,8 +70,27 @@
 		{
 			if(isset($_SESSION['bladh'])) unset($_SESSION['bladh']);
 		}
-		if($ok==true) echo "Wszystko poprawnie";
-		else echo "Coś poszło źle";
+		if($ok==true)
+		{
+			//echo $haslo;
+			$host = "localhost"; //adres hosta
+			$name = "root";	//nazwa użytkownika
+			$pass = "";	//hasło, jeśli nie ma zostawić puste
+			$dbname = "projekt"; //nazwa bazy danych
+			$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
+
+			if(mysqli_connect_errno())
+			{
+				header("Location: uzytkownicy.php");
+				$_SESSION['bladc']="Błąd połączenia z bazą danych";
+			}
+			else
+			{
+				if(isset($_SESSION['bladc'])) unset($_SESSION['bladc']);
+				echo $haslo;
+			}
+		}
+		else echo "Coś poszło źle ".$haslo;
 	}
 ?>
 
