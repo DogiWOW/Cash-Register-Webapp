@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
 	//WALIDACJA DANYCH Z FOMRULARZA
 	if((!isset($_SESSION['zalogowany'])) || ($_SESSION['zalogowany']!=true) || $_SESSION['admin']!=1)
 	{
@@ -88,11 +89,6 @@
 			else
 			{
 				if(isset($_SESSION['bladc'])) unset($_SESSION['bladc']); //wyłączanie błędu połączenia
-				echo "Imie: ".$imie.'<br />';
-				echo "Nazwisko: ".$nazwisko.'<br />';
-				echo "login: ".$login.'<br />';
-				echo "haslo: ".$haslo.'<br />';
-				echo "email: ".$email.'<br />';
 				$kwerenda="INSERT INTO uzytkownicy(imie, nazwisko, email, login, haslo) VALUES('$imie', '$nazwisko', '$email', '$login', '$haslo')";
 				if(mysqli_query($conn, $kwerenda))
 				{

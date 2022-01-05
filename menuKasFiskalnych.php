@@ -1,10 +1,7 @@
 <?php
  session_start();
- if((!isset($_SESSION['zalogowany'])) || ($_SESSION['zalogowany']!=true))
-	{
-		header('Location: index.php');
-		exit();
-	}
+ error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
+
 ?>
 <!DOCTYPE html>
 <html lang="pl">

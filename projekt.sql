@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 04 Sty 2022, 23:50
+-- Czas generowania: 04 Sty 2022, 22:38
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `kasy` (
   `id` int(2) NOT NULL,
   `data_fisk` date NOT NULL,
-  `kontrahent` int(2) DEFAULT NULL,
+  `kontrahent` int(2) NOT NULL,
+  `nip` varchar(13) NOT NULL,
+  `telefon` int(9) NOT NULL,
   `nr_unikatowy` varchar(12) NOT NULL,
   `model` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,17 +41,17 @@ CREATE TABLE `kasy` (
 -- Zrzut danych tabeli `kasy`
 --
 
-INSERT INTO `kasy` (`id`, `data_fisk`, `kontrahent`, `nr_unikatowy`, `model`) VALUES
-(1, '2021-10-19', 1, 'AEC 15343534', 'NANO ONLINE'),
-(2, '2021-09-17', 2, 'AED 73453524', 'POSPAY ONLINE'),
-(3, '2021-11-09', 3, 'AEB 74937402', 'ERGO E'),
-(4, '2021-08-18', 4, 'AED 82649106', 'NOVA'),
-(5, '2021-04-13', 5, 'AEC 63824857', 'DEON ONLINE'),
-(6, '2021-09-03', 6, 'BCE 92749527', 'K10 ONLINE'),
-(7, '2021-04-05', 7, 'BDA 85937589', 'NANO ONLINE'),
-(8, '2021-12-08', 8, 'ABE 84796724', 'POSPAY ONLINE'),
-(9, '2021-02-16', 9, 'BAC 83869205', 'DEON LAN E'),
-(10, '2021-09-29', 10, 'CEB 81067361', 'K10 ONLINE');
+INSERT INTO `kasy` (`id`, `data_fisk`, `kontrahent`, `nip`, `telefon`, `nr_unikatowy`, `model`) VALUES
+(1, '2021-10-19', 1, '845-326-64-25', 756274366, 'AEC 15343534', 'NANO online'),
+(2, '2021-09-17', 2, '763-174-89-47', 567857856, 'AED 73453524', 'POSPAY online'),
+(3, '2021-11-09', 3, '125-523-41-63', 782834646, 'AEB 74937402', 'ERGO mobile'),
+(4, '2021-08-18', 4, '642-515-75-35', 489248725, 'AED 82649106', 'K1 online'),
+(5, '2021-04-13', 5, '593-248-42-36', 582648560, 'AEC 63824857', 'DEON online'),
+(6, '2021-09-03', 6, '425-642-15-23', 639273947, 'BCE 92749527', 'K10 mobile'),
+(7, '2021-04-05', 7, '534-174-32-26', 592758395, 'BDA 85937589', 'NANO online'),
+(8, '2021-12-08', 8, '314-215-21-46', 858275925, 'ABE 84796724', 'POSPAY online'),
+(9, '2021-02-16', 9, '514-632-37-25', 853928548, 'BAC 83869205', 'DEON online'),
+(10, '2021-09-29', 10, '327-324-65-21', 829473183, 'CEB 81067361', 'K10 mobile');
 
 -- --------------------------------------------------------
 
@@ -93,24 +95,26 @@ CREATE TABLE `przeglady` (
   `id` int(2) NOT NULL,
   `data` date NOT NULL,
   `nr_kasy` varchar(12) NOT NULL,
-  `klient` int(2) DEFAULT NULL
+  `klient` int(2) NOT NULL,
+  `telefon` int(9) NOT NULL,
+  `email` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `przeglady`
 --
 
-INSERT INTO `przeglady` (`id`, `data`, `nr_kasy`, `klient`) VALUES
-(1, '2022-10-19', 'KF001', 1),
-(2, '2022-09-17', 'KF002', 2),
-(3, '2022-11-09', 'KF003', 3),
-(4, '2022-08-18', 'KF004', 4),
-(5, '2022-04-13', 'KF005', 5),
-(6, '2022-09-03', 'KF006', 6),
-(7, '2022-04-05', 'KF007', 7),
-(8, '2022-12-08', 'KF008', 8),
-(9, '2022-02-16', 'KF009', 9),
-(10, '2022-09-29', 'KF010', 10);
+INSERT INTO `przeglady` (`id`, `data`, `nr_kasy`, `klient`, `telefon`, `email`) VALUES
+(1, '2022-10-19', 'KF001', 1, 756274366, 'piotro131@onet.pl'),
+(2, '2022-09-17', 'KF002', 2, 567857856, 'kowal5233@wp.pl'),
+(3, '2022-11-09', 'KF003', 3, 782834646, 'ostrow6421@gmail.com'),
+(4, '2022-08-18', 'KF004', 4, 489248725, 'porze754@o2.pl'),
+(5, '2022-04-13', 'KF005', 5, 582648560, 'olec234@interia.pl'),
+(6, '2022-09-03', 'KF006', 6, 639273947, 'wisni213@gmail.com'),
+(7, '2022-04-05', 'KF007', 7, 592758395, 'walcza5234@o2.pl'),
+(8, '2022-12-08', 'KF008', 8, 858275925, 'zawad24@onet.pl'),
+(9, '2022-02-16', 'KF009', 9, 853928548, 'urszuand321@wp.pl'),
+(10, '2022-09-29', 'KF010', 10, 829473183, 'nowa412@interia.pl');
 
 -- --------------------------------------------------------
 
