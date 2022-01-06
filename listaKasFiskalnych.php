@@ -6,7 +6,6 @@
 		header('Location: index.php');
 		exit();
 	}
-
 $host = "localhost"; //adres hosta
 $name = "root";	//nazwa użytkownika
 $pass = "";	//hasło, jeśli nie ma zostawić puste
@@ -47,13 +46,23 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                     <th>Model</th>
                     <th>Numer unikatowy</th>
                     <th>Kontrahent</th>
-                    <th>Data fiskalizacji</th>
+                    <th><form method="POST">Data fiskalizacji <br/><select name="sortowanie">
+                            <option value="default" name="default" selected>Domyślne</option>
+                            <option value="rosnaco" name="rosnaco">Sortuj rosnąco</option>
+                            <option value="malejaco" name="malejaco">Sortuj malejąco</option>
+                        </select> <input type="submit" value="Wykonaj"></form></th>
                     <th></th>
                 </tr>
             <?php
+                $wybor=$_POST['sortowanie'];
                 if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
                 else{
-                    $kwerenda = "SELECT * FROM kasy, klienci WHERE kasy.kontrahent=klienci.id";
+                    if((!isset($wybor))||($wybor=="default"))$kwerenda = "SELECT * FROM kasy, klienci WHERE kasy.kontrahent=klienci.id"; //domyślne sortowanie
+
+                    if($wybor=="malejaco")$kwerenda = "SELECT * FROM kasy, klienci WHERE kasy.kontrahent=klienci.id ORDER BY data_fisk DESC"; //kwerenda do malejąco wg daty
+
+                    if($wybor=='rosnaco')$kwerenda = "SELECT * FROM kasy, klienci WHERE kasy.kontrahent=klienci.id ORDER BY data_fisk ASC"; //kwerenda do rosnąco wg daty
+
                     if($wynik=mysqli_query($conn, $kwerenda)){
                     while($row=mysqli_fetch_array($wynik)){
                         echo '<tr><td>'.$row['model'].'</td><td>'.$row['nr_unikatowy'].'</td><td>'.$row['nazwa'].'</td><td>'.$row['data_fisk'].'</td><td>';

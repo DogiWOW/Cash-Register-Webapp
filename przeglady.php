@@ -1,12 +1,12 @@
 <?php
  session_start();
- //error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
+ error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
  if((!isset($_SESSION['zalogowany'])) || ($_SESSION['zalogowany']!=true))
 	{
 		header('Location: index.php');
 		exit();
 	}
-
+    
 $host = "localhost"; //adres hosta
 $name = "root";	//nazwa użytkownika
 $pass = "";	//hasło, jeśli nie ma zostawić puste
@@ -48,19 +48,35 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                     <th>Klient</th>
                     <th>Telefon klienta</th>
                     <th>Email</th>
-                    <th>Data</th>
+                    <th>
+                        <form method="POST">Data <br /><select name="sortowanie">
+                            <option value="default" name="default" selected>Domyślne</option>
+                            <option value="rosnaco" name="rosnaco">Sortuj rosnąco</option>
+                            <option value="malejaco" name="malejaco">Sortuj malejąco</option>
+                        </select> <input type="submit" value="Wykonaj"></form>
+                        </th>
                     <th></th>
                 </tr>
             <?php
+                $wybor=$_POST['sortowanie'];
+                echo $wybor; //zmienna trzymająca wybór czy rosnąco czy malejąco
                 if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
-                else{
-                    $kwerenda = "SELECT * FROM przeglady, klienci WHERE klienci.id=przeglady.klient";
-                    if($wynik=mysqli_query($conn, $kwerenda)){
-                    while($row=mysqli_fetch_array($wynik)){
-                        echo '<tr><td>'.$row['nr_kasy'].'</td><td>'.$row['nazwa'].'</td><td>'.$row['telefon'].'</td><td>'.$row['email'].'</td><td>'.$row['data'].'</td>';
+                else
+                {
+                    if((!isset($wybor))||($wybor=="default"))$kwerenda = "SELECT nr_kasy, nazwa, telefon, email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient"; //domyślne sortowanie
+
+                    if($wybor=="malejaco")$kwerenda = "SELECT nr_kasy, nazwa, telefon, email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient ORDER BY data DESC"; //kwerenda do malejąco wg daty
+
+                    if($wybor=='rosnaco')$kwerenda = "SELECT nr_kasy, nazwa, telefon, email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient ORDER BY data ASC"; //kwerenda do rosnąco wg daty
+
+                    if($wynik=mysqli_query($conn, $kwerenda))
+                    {
+                        while($row=mysqli_fetch_array($wynik))
+                        {
+                            echo '<tr><td>'.$row['nr_kasy'].'</td><td>'.$row['nazwa'].'</td><td>'.$row['telefon'].'</td><td>'.$row['email'].'</td><td>'.$row['data'].'</td></tr>';
+                        }
                     }
-                }
-                mysqli_close($conn);
+                    mysqli_close($conn);
                 }
             ?>
             </table>
