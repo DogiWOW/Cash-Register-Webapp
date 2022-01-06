@@ -19,9 +19,10 @@ body.menu-preload *{
     font-weight: 600;
 }
 
-input{
+input, select, option{
     color: black;
 }
+
 
 html, body{
     min-height: 100%;
