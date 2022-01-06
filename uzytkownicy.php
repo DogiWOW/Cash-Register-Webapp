@@ -8,6 +8,7 @@
 		exit();
 	}
 
+
  if($_SESSION['zalogowany']!=true) //jeśli nie jest zalogowany
 	{
 		header('Location: index.php');
@@ -43,7 +44,7 @@
     }
     function usuwanie()
     {
-        echo "Działa!";
+        echo "Usuwanie już wkrótce!";
     }
 ?>
 <!DOCTYPE html>

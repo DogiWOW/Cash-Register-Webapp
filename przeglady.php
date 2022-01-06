@@ -6,6 +6,8 @@
 		header('Location: index.php');
 		exit();
 	}
+
+
     
 $host = "localhost"; //adres hosta
 $name = "root";	//nazwa użytkownika
@@ -49,7 +51,7 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                     <th>Email</th>
                     <th>
                         <form method="POST">Data <br /><select name="sortowanie">
-                            <option value="default" name="default" selected>Domyślne</option>
+                            <option value="default" name="default">Domyślne</option>
                             <option value="rosnaco" name="rosnaco">Sortuj rosnąco</option>
                             <option value="malejaco" name="malejaco">Sortuj malejąco</option>
                         </select> <input type="submit" value="Wykonaj"></form>
@@ -57,8 +59,7 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                     <th></th>
                 </tr>
             <?php
-                $wybor=$_POST['sortowanie'];
-                echo $wybor; //zmienna trzymająca wybór czy rosnąco czy malejąco
+                $wybor=$_POST['sortowanie']; //zmienna trzymająca wybór czy rosnąco czy malejąco
                 if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
                 else
                 {

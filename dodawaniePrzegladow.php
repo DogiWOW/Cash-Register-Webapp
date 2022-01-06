@@ -6,6 +6,7 @@
 		header('Location: index.php');
 		exit();
 	}
+
 	echo '<form method="POST">';
 	echo '<b>PRZEGLĄD</b><br />';
 	echo 'Numer kasy: <input type="text" name="nr_kasy" />';

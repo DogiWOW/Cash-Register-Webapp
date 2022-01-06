@@ -1,47 +1,59 @@
 <?php
  session_start();
- error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
+ error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywania błędów
 
  if((!isset($_SESSION['zalogowany'])) || ($_SESSION['zalogowany']!=true))
 	{
 		header('Location: index.php');
 		exit();
 	}
-
-function zadanie_admin()
+function wysylanie()
 {
-    $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
-    echo<<<END
-    <center>
-        <form method="POST">
-            Zadanie <br /><input type="text" name="zadanko"/>
-            <input type="submit" value="Wyślij" />
-        </form>
-    </center>
-    END;
-    $zadanko=$_POST['zadanko'];
-    fwrite($plik, $zadanko);
-    fclose($plik);
-}
-function zadanie_uzyt()
-{
-    $plik=fopen("zadanie.txt","r"); //zmienna z otwartym plikiem, tylko odczyt
+    $host = "localhost"; //adres hosta
+	$name = "root";	//nazwa użytkownika
+	$pass = "";	//hasło, jeśli nie ma zostawić puste
+	$dbname = "projekt"; //nazwa bazy danych
+	$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
 
-    if(file_get_contents("zadanie.txt")) //jeśli plik nie jest pusty
+    if(mysqli_connect_errno()) echo "Usługa tymczasowo niedostępna przez problemy techniczne.";
+    else
     {
-        echo '<center><h2>Zadanie do wykonania:</h2><br />'.fgets($plik, $zadanko).'<br /><form method="POST"><input type="submit" value="Wykonano" name="przycisk"/>'.'</form>'.'</center>'; //wyświetlanie zadania jeśli coś jest w pliku
-        if(isset($_POST['przycisk']))
+        $email_zalogowanego=$_SESSION['email'];
+        $kwerenda="SELECT email FROM uzytkownicy WHERE email='$email_zalogowanego'";
+        if(mysqli_query($conn, $kwerenda))
         {
-            $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
-
-            file_put_contents("zadanie.txt", "");
-            if(!file_get_contents("zadanie.txt")) header("Location: menuKasFiskalnych.php");
+            echo<<<END
+            <center>
+                <form method="POST">
+                E-mail: <input type="text" name="email" /><br />
+                Tresc: <textarea type="text" name="tresc" rows="10"></textarea><br />
+                <input type="submit" value="Wyślij" />
+                </form>
+            </center>
+            END;
+            $email=$_POST['email'];
+            $tresc=$_POST['tresc'];
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) //Jeśli email jest niepoprawny
+            {
+                $_SESSION['blademail']="<center>Źle wprowadzony e-mail!</center>";
+                echo $_SESSION['blademail'];
+            }
+            if((empty($email))||(empty($tresc))) //jeśli zmienne email i tresc są puste wykonaj
+            {
+                $_SESSION['bladwypelniania']="<center>Wypełnij dane!</center>";
+                echo $_SESSION['bladwypelniania'];
+            }
+            else //wszystko jest w porządku
+            {     
+                if(isset($_SESSION['bladwypelniania'])) unset($_SESSION['bladwypelniania']);
+                if(isset($_SESSION['blademail'])) unset($_SESSION['blademail']);
+                $plik=fopen("mail.txt","w"); //zmienna z plikiem mail.txt, tylko zapis (w)
+                fwrite($plik, "Nadawca: $email_zalogowanego\nOdbiorca: $email\nTreść: $tresc");
+                fclose($plik);
+            }
+        mysqli_close($conn);
         }
-
-        //if($polecenie=="Wykonano") /ftruncate("zadanie.txt", 1);
     }
-    else if(!file_get_contents("zadanie.txt")) echo "<center>Brak zadań</center>"; //jeśli plik jest pusty
-    fclose($plik); //zamykanie pliku
 }
 ?>
 <!DOCTYPE html>
@@ -67,14 +79,7 @@ function zadanie_uzyt()
             </div>
         </div>
         <?php
-            if($_SESSION['admin']==1)
-            {
-                zadanie_admin();
-            }
-            else if($_SESSION['admin']!=1)
-            {
-                zadanie_uzyt();
-            }
+            wysylanie();
         ?>
         <!-- Znikające okna początek -->
         <div id="user-details-window">

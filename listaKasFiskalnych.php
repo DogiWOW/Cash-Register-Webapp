@@ -6,6 +6,7 @@
 		header('Location: index.php');
 		exit();
 	}
+
 $host = "localhost"; //adres hosta
 $name = "root";	//nazwa użytkownika
 $pass = "";	//hasło, jeśli nie ma zostawić puste
@@ -46,7 +47,7 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                     <th>Numer unikatowy</th>
                     <th>Kontrahent</th>
                     <th><form method="POST">Data fiskalizacji <br/><select name="sortowanie">
-                            <option value="default" name="default" selected>Domyślne</option>
+                            <option value="default" name="default">Domyślne</option>
                             <option value="rosnaco" name="rosnaco">Sortuj rosnąco</option>
                             <option value="malejaco" name="malejaco">Sortuj malejąco</option>
                         </select> <input type="submit" value="Wykonaj"></form></th>

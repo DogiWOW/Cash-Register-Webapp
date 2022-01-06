@@ -6,6 +6,7 @@
 		header('Location: index.php');
 		exit();
 	}
+
 	echo '<form method="POST">';
 	echo '<b>KASA FISKALNA</b><br />';
 	echo 'Model: <input type="text" name="model" />';
