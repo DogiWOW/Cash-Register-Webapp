@@ -2,6 +2,46 @@
  session_start();
  error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
 
+ if((!isset($_SESSION['zalogowany'])) || ($_SESSION['zalogowany']!=true))
+	{
+		header('Location: index.php');
+		exit();
+	}
+function zadanie_admin()
+{
+    $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
+    echo<<<END
+    <center>
+        <form method="POST">
+            Zadanie <br /><input type="text" name="zadanko" />
+            <input type="submit" value="Wyślij" />
+        </form>
+    </center>
+    END;
+    $zadanko=$_POST['zadanko'];
+    fwrite($plik, $zadanko);
+    fclose($plik);
+}
+function zadanie_uzyt()
+{
+    $plik=fopen("zadanie.txt","r"); //zmienna z otwartym plikiem, tylko odczyt
+
+    if(file_get_contents("zadanie.txt")) //jeśli plik nie jest pusty
+    {
+        echo '<center><h2>Zadanie do wykonania:</h2><br />'.fgets($plik, $zadanko).'<br /><form method="POST"><input type="submit" value="Wykonano" name="przycisk"/>'.'</form>'.'</center>'; //wyświetlanie zadania jeśli coś jest w pliku
+        if(isset($_POST['przycisk']))
+        {
+            $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
+
+            file_put_contents("zadanie.txt", "");
+            if(!file_get_contents("zadanie.txt")) header("Location: menuKasFiskalnych.php");
+        }
+
+        //if($polecenie=="Wykonano") /ftruncate("zadanie.txt", 1);
+    }
+    else if(!file_get_contents("zadanie.txt")) echo "<center>Brak zadań</center>"; //jeśli plik jest pusty
+    fclose($plik); //zamykanie pliku
+}
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -22,10 +62,19 @@
                 <h1>System Zarządzania Kasami Fiskalnymi</h1>
             </div>
             <div id='logged-user'>
-                <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>  
+            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
             </div>
         </div>
-        <img src="Images/user-add-icon.png" width="100px">
+        <?php
+            if($_SESSION['admin']==1)
+            {
+                zadanie_admin();
+            }
+            else if($_SESSION['admin']!=1)
+            {
+                zadanie_uzyt();
+            }
+        ?>
         <!-- Znikające okna początek -->
         <div id="user-details-window">
             <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
@@ -50,7 +99,7 @@
                     <li><a href='klienci.php'><i class="fas fa-id-card"></i>Klienci</a></li>
                     <li><a href='wyslijMaila.php'><i class="far fa-envelope"></i>Wyślij maila do klienta</a></li>
                     <?php 
-                    if($_SESSION['admin'] == 1){
+                    if($_SESSION['admin']==1){
                         echo "<li><a href='uzytkownicy.php'><i class='fas fa-address-book'></i>Użytkownicy</a></li>";
                     }
                     ?>

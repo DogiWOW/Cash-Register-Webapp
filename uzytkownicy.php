@@ -2,7 +2,13 @@
  session_start();
  error_reporting(E_ERROR | E_PARSE); //wyłączenie pokazywanie błędów
 
- if($_SESSION['admin']!=1) //jeśli użytkownik jest adminem
+ if(($_SESSION['zalogowany']==true)&&($_SESSION['admin']!=1)) //jeśli użytkownik nie jest adminem
+	{
+		header('Location: menuKasFiskalnych.php');
+		exit();
+	}
+
+ if($_SESSION['zalogowany']!=true) //jeśli nie jest zalogowany
 	{
 		header('Location: index.php');
 		exit();
