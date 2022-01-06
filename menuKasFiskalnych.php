@@ -22,10 +22,10 @@
                 <h1>System Zarządzania Kasami Fiskalnymi</h1>
             </div>
             <div id='logged-user'>
-            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
-                
+                <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>  
             </div>
         </div>
+        <img src="Images/user-add-icon.png" width="100px">
         <!-- Znikające okna początek -->
         <div id="user-details-window">
             <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>

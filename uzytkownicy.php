@@ -15,15 +15,16 @@
 
     function formularz_dodawania()
     {        
-        echo '<center><div id="formularz_dodawania">';
-        echo '<form method="POST" action="dodaj_uzyt.php" />';
-        echo 'Imie: <input type="text" name="imie" />(min. 20 znaków)<br />';
-        echo 'Nazwisko: <input type="text" name="nazwisko" />(min. 28 znaków)<br />';
-        echo 'Login: <input type="text" name="login" />(min. 8 znaków)<br />';
-        echo 'Hasło: <input type="text" name="haslo" />(min. 8 znaków)<br />';
-        echo 'Email: <input type="text" name="email" /><br />';
-        echo '<input type="submit" value="Zapisz" /><br />';
-        echo '</form></center>';
+        echo '<div id="formularz-dodawania">';
+        echo '<form method="POST" action="dodaj_uzyt.php">';
+        echo '<div class="formularz-heading">Imie:</div><input type="text" name="imie"> (min. 20 znaków)<br>';
+        echo '<div class="formularz-heading">Nazwisko:</div><input type="text" name="nazwisko"> (min. 28 znaków)<br>';
+        echo '<div class="formularz-heading">Login:</div><input type="text" name="login"> (min. 8 znaków)<br>';
+        echo '<div class="formularz-heading">Hasło:</div><input type="text" name="haslo"> (min. 8 znaków)<br>';
+        echo '<div class="formularz-heading">Email:</div><input type="text" name="email"><br>';
+        echo '<div id="formularz-zapisz"><input type="submit" value="Zapisz"></div>';
+        echo '</form>';
+        echo '</div>';
         /*if(isset($_SESSION['bladc'])) 
         {
             echo $_SESSION['bladc'];
@@ -58,17 +59,11 @@
                 <h1>System Zarządzania Kasami Fiskalnymi</h1>
             </div>
             <div id='logged-user'>
-            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
-                
+                <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>  
             </div>
         </div>
-        <!-- Znikające okna początek -->
-        <div id="user-details-window">
-            <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
-            <a href='logout.php'>Wyloguj</a>
-        </div>
         <div class='content'>
-            <table class='dane_bazadanych'>
+            <table class='dane-uzytkownicy'>
                 <tr>
                     <th>Imie</th>
                     <th>Nazwisko</th>
@@ -83,14 +78,15 @@
                     while($row=mysqli_fetch_array($wynik)){
                         echo '<tr><td>'.$row['imie'].'</td><td>'.$row['nazwisko'].'</td><td>'.$row['email'].'</td><td><form method="POST"><input type="submit" value="USUŃ" name="usuwanie" /></form></td></tr>';
                     }
-                    echo '<tr><td colspan="4"><form method="POST"><input type="submit" value="Dodaj użytkownika" name="dodajuzytkownika"></form></td></tr>';
                 }
                 mysqli_close($conn);
                 }
             ?>
             </table>
-        </div>
-        <?php 
+            <div class="button-dodaj">
+                <form method="POST"><input type="submit" value="Dodaj użytkownika" name="dodajuzytkownika"></form>
+            </div>
+            <?php 
         $polecenie='';
         if(isset($_POST['dodajuzytkownika']))
         {
@@ -116,8 +112,13 @@
         {
             echo '<center>'.$_SESSION['bladc'].'</center>';
         }
-
         ?>
+        </div>
+        <!-- Znikające okna początek -->
+        <div id="user-details-window">
+            <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
+            <a href='logout.php'>Wyloguj</a>
+        </div>
         <div>
             <input type="checkbox" id="menu-checkbox" onClick="checkState()">
             <label for="menu-checkbox" id="menu-checkbox2">

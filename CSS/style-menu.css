@@ -74,10 +74,11 @@
     height: 170px;
     width: 220px;
     background-color: white;
-    top: 90px;
-    right: 30px;
+    top: 75px;
+    right: 15px;
     padding: 15px;
     border-radius: 20px;
+    outline: 3px #002b59 solid;
 }
 #user-details-window a, p{
     color: black;

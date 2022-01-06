@@ -22,18 +22,17 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
     <script src="https://kit.fontawesome.com/e7af9736bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style-menu.css">
     <link rel="stylesheet" href="CSS/style-strona.css">
-    <title>Menu Kas Fiskalnych</title>
+    <title>Lista Kas Fiskalnych</title>
     <script src="Javascript/user-details.js" defer></script>
 </head>
 <body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
-                <h1>System Zarządzania Kasami Fiskalnymi</h1>
+                <h1>Lista Kas Fiskalnych</h1>
             </div>
             <div id='logged-user'>
-            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
-                
+                <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?> 
             </div>
         </div>
         <!-- Znikające okna początek -->
@@ -42,7 +41,7 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
             <a href='logout.php'>Wyloguj</a>
         </div>
         <div class='content'>
-            <table class='dane_bazadanych'>
+            <table class='dane-tabele'>
                 <tr>
                     <th>Model</th>
                     <th>Numer unikatowy</th>
@@ -56,7 +55,7 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                     $kwerenda = "SELECT * FROM kasy, klienci WHERE kasy.kontrahent=klienci.id";
                     if($wynik=mysqli_query($conn, $kwerenda)){
                     while($row=mysqli_fetch_array($wynik)){
-                        echo '<tr><td>'.$row['model'].'</td><td>'.$row['nr_unikatowy'].'</td><td>'.$row['nazwa'].'</td><td>'.$row['data_fisk'].'</td><td>';
+                        echo '<tr><td>'.$row['model'].'</td><td>'.$row['nr_unikatowy'].'</td><td>'.$row['nazwa'].'</td><td>'.$row['data_fisk'].'</td>';
                     }
                 }
                 mysqli_close($conn);

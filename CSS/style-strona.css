@@ -3,7 +3,7 @@
     --section-gradient-2: #00b9be ;
     --sidebar-bg-clr: #002b59;
 }
-@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Rubik:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Rubik:ital,wght@0,600;1,800&display=swap');
 
 body.menu-preload *{
     animation-duration: 0s !important;
@@ -48,34 +48,140 @@ html, body{
 }
 
 #logged-user-icon{
-    margin-right: 20px;
-    padding-left: 20px;
+    padding-left: 27.5px;
     font-size: 3.5rem;
+}
+
+#logged-user p{
+    padding-right: 10px;
+    color: inherit;
 }
 
 .content{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
 }
-.dane_bazadanych{
+.dane-tabele{
     grid-column-start: 2;
     justify-self: stretch;
     align-self: center;
     border-collapse: collapse;
 }
 
-.dane_bazadanych td,th{  
+.dane-tabele td,th{  
     padding: 10px;
     text-align: center;
 }
-.dane_bazadanych tr:not(:last-child){
+.dane-tabele tr:not(:last-child){
     border-bottom: 2px #002b59 groove;
 }
 
-.dane_bazadanych td:not(:last-child), .dane_bazadanych th:not(:last-child){
+.dane-tabele th{
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #032c58;
+}
+
+.dane-tabele td, .dane-tabele th:not(:last-child){
     border-right: 2px #002b59 groove;
 }
 
-.dane_bazadanych tr:nth-last-child(2){
-    border-bottom: hidden;
+.dane-uzytkownicy{
+    grid-column-start: 2;
+    justify-self: stretch;
+    align-self: center;
+    border-collapse: collapse;
+}
+
+.dane-uzytkownicy tr{
+    height: auto;
+    margin:0;
+    padding:0;
+}
+
+.dane-uzytkownicy td,th{  
+    padding: 10px;
+    text-align: center;
+}
+
+.dane-uzytkownicy tr:not(:last-child){
+    border-bottom: 2px #002b59 groove;
+}
+
+.dane-uzytkownicy td:not(:last-child), .dane-uzytkownicy th:not(:last-child){
+    border-right: 2px #002b59 groove;
+}
+
+.dane-uzytkownicy td{
+    padding: 0px;
+}
+
+.dane-uzytkownicy input{
+    width: 100%;
+    padding-block: 9px;
+    border-radius: 0px;
+    color: #002b59;
+    border: none;
+    background-color:rgba(0, 95, 140, 0.1);
+    font-size: 1.3rem;
+}
+
+.dane-uzytkownicy input:hover{
+    color: #9ff4e5;
+    background-color:rgba(0, 95, 140, 0.6);
+}
+
+.button-dodaj{
+    grid-row-start: 2;
+    grid-column-start: 2;
+    justify-self: center;
+    margin: 20px;
+}
+
+.button-dodaj input{
+    padding: 20px;
+    font-size: 2rem;
+    background: url(IconImages/user-add-icon.png) no-repeat scroll -60px -12px;
+    padding-left:60px;
+    background-color:rgba(0, 95, 140, 0.1);
+    border-radius: 25px;
+    background-size: 175px;
+    color: #002b59;
+    border: none;
+}
+
+.button-dodaj input:hover{
+    color: #9ff4e5;
+    background-color:rgba(0, 95, 140, 0.6);
+}
+
+#formularz-dodawania{
+    grid-row-start: 3;
+    grid-column-start: 2;
+    justify-self: center;
+}
+
+.formularz-heading{
+    display: inline-block;
+    min-width: 105px;
+    font-size: 20px;
+}
+
+#formularz-zapisz{
+    margin-top: 20px;
+    text-align: center;
+}
+#formularz-zapisz input{
+    background-color:rgba(0, 95, 140, 0.1);
+    border-radius: 25px;
+    color: #002b59;
+    border: none;
+    font-size: 1.8rem;
+    padding: 15px;
+    min-width: 40%;
+}
+
+#formularz-zapisz input:hover{
+    color: #9ff4e5;
+    background-color:rgba(0, 95, 140, 0.6);
 }
