@@ -19,17 +19,14 @@ body.menu-preload *{
     font-weight: 600;
 }
 
-input, select, option{
-    color: black;
-}
-
 
 html, body{
-    min-height: 100%;
+    min-height: 99.5%;
     margin: 5px;
-    background: linear-gradient(to bottom right, var(--section-gradient-1), var(--section-gradient-2));
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-image: url(../Images/logo.png), url(../Images/logo.png), linear-gradient(to bottom right, var(--section-gradient-1), var(--section-gradient-2));
+    background-attachment: fixed,fixed,fixed;
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: 164% 50%, -64% 50%;
 }
 
 #heading-user{
@@ -73,7 +70,6 @@ html, body{
     grid-template-columns: 1fr 2fr 1fr;
 }
 .dane-tabele{
-    grid-column-start: 2;
     justify-self: stretch;
     align-self: center;
     border-collapse: collapse;
@@ -87,7 +83,7 @@ html, body{
     border-bottom: 2px #002b59 groove;
 }
 
-.dane-tabele th{
+.dane-tabele th , .dane-tabele p{
     font-style: italic;
     font-size: 1.3rem;
     color: #032c58;
@@ -97,8 +93,20 @@ html, body{
     border-right: 2px #002b59 groove;
 }
 
+.dane-tabele-button{
+    background-color:#002b59;
+    border-radius: 5px;
+    border: none;
+    font-size: 1.1rem;
+    padding-block: 2px;
+    padding-inline: 5px;    
+}
+
+.dane-tabele-button:hover{
+    background-color: rgba(0, 43, 89, 0.5);
+}
+
 .dane-uzytkownicy{
-    grid-column-start: 2;
     justify-self: stretch;
     align-self: center;
     border-collapse: collapse;
@@ -152,7 +160,7 @@ html, body{
 .button-dodaj input{
     padding: 20px;
     font-size: 2rem;
-    background: url(IconImages/user-add-icon.png) no-repeat scroll -60px -12px;
+    background: url(../Images/user-add-icon.png) no-repeat scroll -60px -12px;
     padding-left:60px;
     background-color:rgba(0, 95, 140, 0.1);
     border-radius: 25px;
@@ -197,27 +205,8 @@ html, body{
     background-color:rgba(0, 95, 140, 0.6);
 }
 
-#dodaj-przeglad{
+.position-middle-row1{
     grid-row-start: 1;
     grid-column-start: 2;
-    justify-self: center;
-}
-
-#dodaj-kase{
-    grid-row-start: 1;
-    grid-column-start: 2;
-    justify-self: center;
-}
-
-#lista-zadań{
-    grid-row-start: 1;
-    grid-column-start: 2;
-    justify-self: center;
-}
-
-#wyslij-mail{
-    grid-row-start: 1;
-    grid-column-start: 2;
-    justify-self: center;
     text-align: center;
 }

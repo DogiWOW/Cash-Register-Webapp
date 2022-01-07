@@ -36,7 +36,7 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
             <a href='logout.php'>Wyloguj</a>
         </div>
         <div class='content'>
-            <table class='dane-tabele'>
+            <table class='position-middle-row1 dane-tabele'>
                 <tr>
                     <th>Imie i nazwisko</th>
                     <th>Adres</th>

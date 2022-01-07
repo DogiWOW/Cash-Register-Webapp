@@ -31,7 +31,7 @@
             </div>
         </div>
 		<div class="content">
-			<div id="dodaj-przeglad">
+			<div class="position-middle-row1" id="dodaj-przeglad">
 				<form method="POST">
 					<b>PRZEGLĄD</b><br>
 					Numer kasy: <input type="text" name="nr_kasy">

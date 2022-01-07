@@ -77,7 +77,7 @@ function wysylanie()
             </div>
         </div>
         <div class="content">
-            <div id="wyslij-mail">
+            <div class="position-middle-row1" id="wyslij-mail">
                 <?php
                     wysylanie();
                 ?>

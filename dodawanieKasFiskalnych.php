@@ -32,7 +32,7 @@
             </div>
         </div>
 		<div class="content">
-			<div id="dodaj-kase">
+			<div class="position-middle-row1" id="dodaj-kase">
 				<form method="POST">
 				<b>KASA FISKALNA</b><br>
 				Model: <input type="text" name="model">

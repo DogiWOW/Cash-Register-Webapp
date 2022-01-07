@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class='content'>
-            <table class='dane-uzytkownicy'>
+            <table class='dane-uzytkownicy position-middle-row1'>
                 <tr>
                     <th>Imie</th>
                     <th>Nazwisko</th>

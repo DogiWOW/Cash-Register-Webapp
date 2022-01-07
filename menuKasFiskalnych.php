@@ -12,7 +12,7 @@ function zadanie_admin()
 {
     $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
     echo<<<END
-        <div id="lista-zadań">
+        <div class="position-middle-row1" id="lista-zadań">
         <form method="POST">
             Zadanie <br /><input type="text" name="zadanko"/>
             <input type="submit" value="Wyślij" />
