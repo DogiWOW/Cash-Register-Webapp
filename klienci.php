@@ -17,14 +17,14 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
     <script src="https://kit.fontawesome.com/e7af9736bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style-menu.css">
     <link rel="stylesheet" href="CSS/style-strona.css">
-    <title>Menu Kas Fiskalnych</title>
+    <title>Klienci</title>
     <script src="Javascript/user-details.js" defer></script>
 </head>
 <body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
-                <h1>System Zarządzania Kasami Fiskalnymi</h1>
+                <h1>Klienci</h1>
             </div>
             <div id='logged-user'>
                 <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>  

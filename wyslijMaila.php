@@ -23,13 +23,11 @@ function wysylanie()
         if(mysqli_query($conn, $kwerenda))
         {
             echo<<<END
-            <center>
                 <form method="POST">
                 E-mail: <input type="text" name="email" /><br />
                 Tresc: <textarea type="text" name="tresc" rows="10"></textarea><br />
                 <input type="submit" value="Wyślij" />
                 </form>
-            </center>
             END;
             $email=$_POST['email'];
             $tresc=$_POST['tresc'];
@@ -65,22 +63,26 @@ function wysylanie()
     <script src="https://kit.fontawesome.com/e7af9736bb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/style-menu.css">
     <link rel="stylesheet" href="CSS/style-strona.css">
-    <title>Menu Kas Fiskalnych</title>
+    <title>Wyślij maila</title>
     <script src="Javascript/user-details.js" defer></script>
 </head>
 <body class="menu-preload">
     <div id='main'>
         <div id="heading-user">
             <div id="heading">
-                <h1>System Zarządzania Kasami Fiskalnymi</h1>
+                <h1>Wyślij maila do klienta</h1>
             </div>
             <div id='logged-user'>
-            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
+                <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>
             </div>
         </div>
-        <?php
-            wysylanie();
-        ?>
+        <div class="content">
+            <div id="wyslij-mail">
+                <?php
+                    wysylanie();
+                ?>
+            </div>
+        </div>
         <!-- Znikające okna początek -->
         <div id="user-details-window">
             <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>

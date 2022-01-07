@@ -12,12 +12,12 @@ function zadanie_admin()
 {
     $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
     echo<<<END
-    <center>
+        <div id="lista-zadań">
         <form method="POST">
             Zadanie <br /><input type="text" name="zadanko"/>
             <input type="submit" value="Wyślij" />
         </form>
-    </center>
+        </div>
     END;
     $zadanko=$_POST['zadanko'];
     fwrite($plik, $zadanko);
@@ -63,19 +63,21 @@ function zadanie_uzyt()
                 <h1>System Zarządzania Kasami Fiskalnymi</h1>
             </div>
             <div id='logged-user'>
-            <?php echo $_SESSION['imie'];?><span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span>
+                <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>
             </div>
         </div>
-        <?php
-            if($_SESSION['admin']==1)
-            {
-                zadanie_admin();
-            }
-            else if($_SESSION['admin']!=1)
-            {
-                zadanie_uzyt();
-            }
-        ?>
+        <div class="content">
+            <?php
+                if($_SESSION['admin']==1)
+                {
+                    zadanie_admin();
+                }
+                else if($_SESSION['admin']!=1)
+                {
+                    zadanie_uzyt();
+                }
+            ?>
+        </div>
         <!-- Znikające okna początek -->
         <div id="user-details-window">
             <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>

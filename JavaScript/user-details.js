@@ -10,6 +10,6 @@ function managePopupWindow(){
     }
     else{
         userWindow.style.setProperty('display', 'none');
-        userIcon.style.setProperty('color', 'white');
+        userIcon.style.removeProperty('color', '#002b59');
     }
 }
