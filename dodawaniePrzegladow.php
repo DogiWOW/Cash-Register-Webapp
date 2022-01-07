@@ -31,11 +31,11 @@
             </div>
         </div>
 		<div class="content">
-			<div class="position-middle-row1" id="dodaj-przeglad">
+			<div class="position-middle-row1 dane-dodawanie" id="dodaj-przeglad">
 				<form method="POST">
-					<b>PRZEGLĄD</b><br>
-					Numer kasy: <input type="text" name="nr_kasy">
-					<input type="submit" value="Dodaj">
+					<h2>PRZEGLĄD</h2>
+					<div class="formularz-heading">Numer kasy: </div><input class="dane-input" type="text" name="nr_kasy">
+					<div class='button-dodaj'><input class="button" type="submit" value="Dodaj"></div>
 				</form>
 			</div>
 			<?php

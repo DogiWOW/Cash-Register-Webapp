@@ -24,12 +24,12 @@
     {        
         echo '<div id="formularz-dodawania">';
         echo '<form method="POST" action="dodaj_uzyt.php">';
-        echo '<div class="formularz-heading">Imie:</div><input type="text" name="imie"> (min. 20 znaków)<br>';
-        echo '<div class="formularz-heading">Nazwisko:</div><input type="text" name="nazwisko"> (min. 28 znaków)<br>';
-        echo '<div class="formularz-heading">Login:</div><input type="text" name="login"> (min. 8 znaków)<br>';
-        echo '<div class="formularz-heading">Hasło:</div><input type="text" name="haslo"> (min. 8 znaków)<br>';
-        echo '<div class="formularz-heading">Email:</div><input type="text" name="email"><br>';
-        echo '<div id="formularz-zapisz"><input type="submit" value="Zapisz"></div>';
+        echo '<div class="formularz-heading">Imie:</div><input class="dane-input" type="text" name="imie"> (max. 20 znaków)<br>';
+        echo '<div class="formularz-heading">Nazwisko:</div><input class="dane-input" type="text" name="nazwisko"> (max. 28 znaków)<br>';
+        echo '<div class="formularz-heading">Login:</div><input class="dane-input" type="text" name="login"> (min. 8 znaków)<br>';
+        echo '<div class="formularz-heading">Hasło:</div><input class="dane-input" type="text" name="haslo"> (min. 8 znaków)<br>';
+        echo '<div class="formularz-heading">Email:</div><input class="dane-input" type="text" name="email"><br>';
+        echo '<div id="formularz-zapisz"><input class="button" type="submit" value="Zapisz"></div>';
         echo '</form>';
         echo '</div>';
         /*if(isset($_SESSION['bladc'])) 
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class='content'>
-            <table class='dane-uzytkownicy position-middle-row1'>
+            <table class='position-middle-row1 dane-uzytkownicy'>
                 <tr>
                     <th>Imie</th>
                     <th>Nazwisko</th>
@@ -90,7 +90,7 @@
                 }
             ?>
             </table>
-            <div class="button-dodaj">
+            <div class="button-dodaj-uzytkownika">
                 <form method="POST"><input type="submit" value="Dodaj użytkownika" name="dodajuzytkownika"></form>
             </div>
             <?php 

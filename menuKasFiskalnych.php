@@ -12,10 +12,11 @@ function zadanie_admin()
 {
     $plik=fopen("zadanie.txt","w"); //zmienna z plikiem, tylko zapis
     echo<<<END
-        <div class="position-middle-row1" id="lista-zadań">
+        <div class="position-middle-row1" id="dodaj-zadanie">
         <form method="POST">
-            Zadanie <br /><input type="text" name="zadanko"/>
-            <input type="submit" value="Wyślij" />
+            <h2>ZADANIE</h2> 
+            <input class="dane-input" type="text" name="zadanko">
+            <div class='button-dodaj'><input class="button" type="submit" value="Wyślij"></div>
         </form>
         </div>
     END;
@@ -80,7 +81,7 @@ function zadanie_uzyt()
         </div>
         <!-- Znikające okna początek -->
         <div id="user-details-window">
-            <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
+            <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
             <a href='logout.php'>Wyloguj</a>
         </div>
         <div>

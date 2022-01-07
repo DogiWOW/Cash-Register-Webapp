@@ -34,10 +34,10 @@
 		<div class="content">
 			<div class="position-middle-row1" id="dodaj-kase">
 				<form method="POST">
-				<b>KASA FISKALNA</b><br>
-				Model: <input type="text" name="model">
-				Numer unikatowy: <input type="text" name="nr_unikatowy">
-				<input type="submit" value="Dodaj">
+                    <h2>KASA FISKALNA</h2>
+                    <div class="formularz-heading" style="min-width:175px;">Model: </div><input class="dane-input" type="text" name="model"><br>
+                    <div class="formularz-heading" style="min-width:175px;">Numer unikatowy: </div><input class="dane-input" type="text" name="nr_unikatowy">
+                    <div class='button-dodaj'><input class="button" type="submit" value="Dodaj"></div>
 				</form>
 			</div>
 			<?php
