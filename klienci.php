@@ -7,6 +7,31 @@ $name = "root";	//nazwa użytkownika
 $pass = "";	//hasło, jeśli nie ma zostawić puste
 $dbname = "projekt"; //nazwa bazy danych
 $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
+
+function formularz_dodawania()
+    {        
+        echo '<center><div id="formularz-dodawania">';
+        echo '<form method="POST" action="dodaj_klienta.php">';
+        echo '<div class="formularz-heading">Imie:</div><input type="text" name="imie"> (min. 20 znaków)<br>';
+        echo '<div class="formularz-heading">Nazwisko:</div><input type="text" name="nazwisko"> (min. 28 znaków)<br />';
+        echo '<div class="formularz-heading">Adres:</div><input type="text" name="adres"><br />';
+        echo '<div class="formularz-heading">Miejscowość:</div><input type="text" name="miejscowosc"><br />';
+        echo '<div class="formularz-heading">Email:</div><input type="text" name="email"><br />';
+        echo '<div class="formularz-heading">Telefon:</div><input type="text" name="telefon"><br />';
+        echo '<div class="formularz-heading">NIP:</div><input type="text" name="nip"><br />';
+        echo '<div id="formularz-zapisz"><input type="submit" value="Zapisz"></div>';
+        echo '</form>';
+        echo '</div><center>';
+        /*if(isset($_SESSION['bladc'])) 
+        {
+            echo $_SESSION['bladc'];
+        }
+        else
+        {
+            echo "Dane zostały zapisane";
+        }*/
+        echo '</div>';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -60,6 +85,18 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
             ?>
             </table>
         </div>
+        <br /><center><form method="POST"><input type="submit" value="Dodaj klienta" name="dodajklienta"></form></center>
+        <?php
+            $polecenie='';
+            if(isset($_POST['dodajklienta']))
+            {
+                $polecenie=$_POST['dodajklienta'];
+            }
+            switch($polecenie)
+            {
+                case "Dodaj klienta"; formularz_dodawania();
+            }
+        ?>
         <div>
             <input type="checkbox" id="menu-checkbox" onClick="checkState()">
             <label for="menu-checkbox" id="menu-checkbox2">

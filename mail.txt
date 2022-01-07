@@ -1,3 +1,3 @@
 Nadawca: nowro533@onet.pl
-Odbiorca: awdawd
-Treść: awdawd
+Odbiorca: k@k.com
+Treść: kotek

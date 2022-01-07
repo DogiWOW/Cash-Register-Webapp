@@ -62,7 +62,6 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                 </tr>
             <?php
                 $wybor=$_POST['sortowanie'];
-                echo $wybor; //zmienna trzymająca wybór czy rosnąco czy malejąco
                 if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
                 else
                 {
