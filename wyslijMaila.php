@@ -31,20 +31,8 @@ function wysylanie()
             END;
             $email=$_POST['email'];
             $tresc=$_POST['tresc'];
-            if(!filter_var($email, FILTER_VALIDATE_EMAIL)) //Jeśli email jest niepoprawny
-            {
-                $_SESSION['blademail']="<center>Źle wprowadzony e-mail!</center>";
-                echo $_SESSION['blademail'];
-            }
-            if((empty($email))||(empty($tresc))) //jeśli zmienne email i tresc są puste wykonaj
-            {
-                $_SESSION['bladwypelniania']="<center>Wypełnij dane!</center>";
-                echo $_SESSION['bladwypelniania'];
-            }
-            else //wszystko jest w porządku
+            if((filter_var($email, FILTER_VALIDATE_EMAIL))&&(!empty($tresc)))
             {     
-                if(isset($_SESSION['bladwypelniania'])) unset($_SESSION['bladwypelniania']);
-                if(isset($_SESSION['blademail'])) unset($_SESSION['blademail']);
                 $plik=fopen("mail.txt","w"); //zmienna z plikiem mail.txt, tylko zapis (w)
                 fwrite($plik, "Nadawca: $email_zalogowanego\nOdbiorca: $email\nTreść: $tresc");
                 fclose($plik);
