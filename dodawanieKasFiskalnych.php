@@ -35,16 +35,18 @@
 			<div id="dodaj-kase">
 				<form method="POST">
 				<b>KASA FISKALNA</b><br>
-				Model: <input type="text" name="model">
-				Numer unikatowy: <input type="text" name="nr_unikatowy">
+				Model: <input type="text" name="model"><br />
+				Numer unikatowy: <input type="text" name="nr_unikatowy"><br />
+                Klient: <input type="text" name="nazwa"><br />
 				<input type="submit" value="Dodaj">
 				</form>
 			</div>
 			<?php
 				$model=htmlentities($_POST['model'],ENT_QUOTES,"UTF-8");
 				$nr_unikatowy=htmlentities($_POST['nr_unikatowy'],ENT_QUOTES,"UTF-8");
+                $nazwa=htmlentities($_POST['nazwa'],ENT_QUOTES,"UTF-8");
 		
-				if(!empty($model)&&!empty($nr_unikatowy)) //jeżeli te dwie zmienne nie są puste wykonaj
+				if((!empty($model))&&(!empty($nr_unikatowy))&&(!empty($nazwa))) //jeżeli te dwie zmienne nie są puste wykonaj
 				{
 					$host = "localhost"; //adres hosta
 					$name = "root";	//nazwa użytkownika
@@ -56,14 +58,19 @@
 					else
 					{
 						$aktualna_data=date('Y-m-d'); //pobieranie aktualnej daty
-						$kwerenda="INSERT INTO kasy(data_fisk, nr_unikatowy, model) VALUES('$aktualna_data', '$nr_unikatowy', '$model')";
-						if(mysqli_query($conn, $kwerenda))
+                        $kwerenda_klienci="SELECT id FROM klienci WHERE nazwa='$nazwa'";
+                        if($wynik=mysqli_query($conn, $kwerenda_klienci))
 						{
-							echo "Zapisano";
+                            $id=mysqli_fetch_row($wynik);
+							$kwerenda_kasy="INSERT INTO kasy(data_fisk, nr_unikatowy, model, kontrahent) VALUES('$aktualna_data', '$nr_unikatowy', '$model', $id[0])";
+						    if(mysqli_query($conn, $kwerenda_kasy))
+						    {
+                                header("Location: dodawanieKasFiskalnych.php");
+						    }
 						}
-						else "Nie zapisano";
+						else echo "<center>Nie zapisano</center>";
+                        mysqli_close($conn);
 					}
-					mysqli_close($conn);
 				}
 			?>
 		</div>
