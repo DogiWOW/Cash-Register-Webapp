@@ -41,16 +41,22 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
             <a href='logout.php'>Wyloguj</a>
         </div>
         <div class='content'>
-            <table class='dane-tabele'>
+            <table class='position-middle-row1 dane-tabele'>
                 <tr>
                     <th>Model</th>
                     <th>Numer unikatowy</th>
                     <th>Kontrahent</th>
-                    <th><form method="POST">Data fiskalizacji <br/><select name="sortowanie">
-                            <option value="default" name="default">Domyślne</option>
-                            <option value="rosnaco" name="rosnaco">Sortuj rosnąco</option>
-                            <option value="malejaco" name="malejaco">Sortuj malejąco</option>
-                        </select> <input type="submit" value="Wykonaj"></form></th>
+                    <th>
+                        <form method="POST">
+                            <p>Data fiskalizacji</p>
+                            <select class="dane-tabele-button" name="sortowanie">
+                                <option value="default" name="default">Domyślne</option>
+                                <option value="rosnaco" name="rosnaco">Sortuj rosnąco</option>
+                                <option value="malejaco" name="malejaco">Sortuj malejąco</option>
+                            </select>
+                            <input class="dane-tabele-button" type="submit" value="Wykonaj">
+                        </form>
+                    </th>
                     <th></th>
                 </tr>
             <?php

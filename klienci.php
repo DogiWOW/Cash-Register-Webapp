@@ -10,18 +10,18 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
 
 function formularz_dodawania()
     {        
-        echo '<center><div id="formularz-dodawania">';
+        echo '<div id="formularz-dodawania">';
         echo '<form method="POST" action="dodaj_klienta.php">';
-        echo '<div class="formularz-heading">Imie:</div><input type="text" name="imie"> (min. 20 znaków)<br>';
-        echo '<div class="formularz-heading">Nazwisko:</div><input type="text" name="nazwisko"> (min. 28 znaków)<br />';
-        echo '<div class="formularz-heading">Adres:</div><input type="text" name="adres"><br />';
-        echo '<div class="formularz-heading">Miejscowość:</div><input type="text" name="miejscowosc"><br />';
-        echo '<div class="formularz-heading">Email:</div><input type="text" name="email"><br />';
-        echo '<div class="formularz-heading">Telefon:</div><input type="text" name="telefon"><br />';
-        echo '<div class="formularz-heading">NIP:</div><input type="text" name="nip"><br />';
-        echo '<div id="formularz-zapisz"><input type="submit" value="Zapisz"></div>';
+        echo '<div class="formularz-heading-klient">Imie:</div><input class="dane-input" type="text" name="imie"> (max. 20 znaków)<br>';
+        echo '<div class="formularz-heading-klient">Nazwisko:</div><input class="dane-input"type="text" name="nazwisko"> (max. 28 znaków)<br />';
+        echo '<div class="formularz-heading-klient">Adres:</div><input class="dane-input"type="text" name="adres"><br />';
+        echo '<div class="formularz-heading-klient">Miejscowość:</div><input class="dane-input"type="text" name="miejscowosc"><br />';
+        echo '<div class="formularz-heading-klient">Email:</div><input class="dane-input"type="text" name="email"><br />';
+        echo '<div class="formularz-heading-klient">Telefon:</div><input class="dane-input"type="text" name="telefon"><br />';
+        echo '<div class="formularz-heading-klient">NIP:</div><input class="dane-input"type="text" name="nip"><br />';
+        echo '<div id="formularz-zapisz"><input class="button" type="submit" value="Zapisz"></div>';
         echo '</form>';
-        echo '</div><center>';
+        echo '</div>';
         /*if(isset($_SESSION['bladc'])) 
         {
             echo $_SESSION['bladc'];
@@ -55,13 +55,8 @@ function formularz_dodawania()
                 <span id="logged-user-icon"><i class="fas fa-user" onClick="managePopupWindow()"></i></span><?php echo "<p>".$_SESSION['imie']."</p>";?>  
             </div>
         </div>
-        <!-- Znikające okna początek -->
-        <div id="user-details-window">
-            <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
-            <a href='logout.php'>Wyloguj</a>
-        </div>
         <div class='content'>
-            <table class='dane-tabele'>
+            <table class='position-middle-row1 dane-tabele'>
                 <tr>
                     <th>Imie i nazwisko</th>
                     <th>Adres</th>
@@ -84,9 +79,10 @@ function formularz_dodawania()
                 }
             ?>
             </table>
-        </div>
-        <br /><center><form method="POST"><input type="submit" value="Dodaj klienta" name="dodajklienta"></form></center>
-        <?php
+            <div class="button-dodaj-uzytkownika">
+                <form method="POST"><input type="submit" value="Dodaj klienta" name="dodajklienta"></form>
+            </div>
+            <?php
             $polecenie='';
             if(isset($_POST['dodajklienta']))
             {
@@ -97,6 +93,12 @@ function formularz_dodawania()
                 case "Dodaj klienta"; formularz_dodawania();
             }
         ?>
+        </div>
+        <!-- Znikające okna początek -->
+        <div id="user-details-window">
+            <p>Zalogowano jako:</p> <?php echo "<p>".$_SESSION['imie']." ".$_SESSION['nazwisko']."</p><p>@".$_SESSION['login']."</p>"; ?>
+            <a href='logout.php'>Wyloguj</a>
+        </div>
         <div>
             <input type="checkbox" id="menu-checkbox" onClick="checkState()">
             <label for="menu-checkbox" id="menu-checkbox2">

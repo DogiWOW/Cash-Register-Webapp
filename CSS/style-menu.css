@@ -78,7 +78,7 @@
 }
 
 #user-details-window{
-    position:absolute;
+    position:fixed;
     color: black;
     height: 170px;
     width: 220px;
@@ -95,4 +95,10 @@
 
 #user-details-window p{
     padding-bottom: 10px;
+}
+
+#user-details-window a{
+    position: fixed;
+    top: 250px;
+    right: 100px;
 }

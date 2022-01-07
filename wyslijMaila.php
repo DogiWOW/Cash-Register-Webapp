@@ -24,9 +24,9 @@ function wysylanie()
         {
             echo<<<END
                 <form method="POST">
-                E-mail: <input type="text" name="email" /><br />
-                Tresc: <textarea type="text" name="tresc" rows="10"></textarea><br />
-                <input type="submit" value="Wyślij" />
+                <p><div class="formularz-heading">E-mail: </div><input class="dane-input" style="min-width:216.667px;" type="text" name="email"></p>
+                <p><div class="formularz-heading">Tresc: </div><textarea class="dane-input" type="text" name="tresc" rows="8"></textarea></p>
+                <div class='button-dodaj'><input class="button" type="submit" value="Wyślij"></div>
                 </form>
             END;
             $email=$_POST['email'];
@@ -65,7 +65,7 @@ function wysylanie()
             </div>
         </div>
         <div class="content">
-            <div id="wyslij-mail">
+            <div class="position-middle-row1" id="wyslij-mail">
                 <?php
                     wysylanie();
                 ?>
