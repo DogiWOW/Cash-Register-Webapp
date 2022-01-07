@@ -62,11 +62,11 @@ $conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą dan
                 if(mysqli_connect_errno()) echo "Problemy techniczne, proszę spróbować później.";
                 else
                 {
-                    if((!isset($wybor))||($wybor=="default"))$kwerenda = "SELECT nr_kasy, nazwa, przeglady.telefon, przeglady.email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient;"; //domyślne sortowanie
+                    if((!isset($wybor))||($wybor=="default"))$kwerenda = "SELECT nr_kasy, nazwa, telefon, email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient;"; //domyślne sortowanie
 
-                    if($wybor=="malejaco")$kwerenda = "SELECT nr_kasy, nazwa, przeglady.telefon, przeglady.email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient ORDER BY data DESC"; //kwerenda do malejąco wg daty
+                    if($wybor=="malejaco")$kwerenda = "SELECT nr_kasy, nazwa, telefon, email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient ORDER BY data DESC"; //kwerenda do malejąco wg daty
 
-                    if($wybor=='rosnaco')$kwerenda = "SELECT nr_kasy, nazwa, przeglady.telefon, przeglady.email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient ORDER BY data ASC"; //kwerenda do rosnąco wg daty
+                    if($wybor=='rosnaco')$kwerenda = "SELECT nr_kasy, nazwa, telefon, email, data FROM przeglady,klienci WHERE klienci.id=przeglady.klient ORDER BY data ASC"; //kwerenda do rosnąco wg daty
 
                     if($wynik=mysqli_query($conn, $kwerenda))
                     {
