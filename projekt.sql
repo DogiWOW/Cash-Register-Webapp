@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Sty 2022, 07:12
+-- Czas generowania: 07 Sty 2022, 13:13
 -- Wersja serwera: 10.4.22-MariaDB
 -- Wersja PHP: 8.0.13
 
@@ -63,7 +63,7 @@ CREATE TABLE `klienci` (
   `nazwa` varchar(20) NOT NULL,
   `adres` varchar(15) NOT NULL,
   `miejscowosc` varchar(25) NOT NULL,
-  `telefon` int(9) NOT NULL,
+  `telefon` varchar(9) NOT NULL,
   `email` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -72,16 +72,16 @@ CREATE TABLE `klienci` (
 --
 
 INSERT INTO `klienci` (`id`, `nip`, `nazwa`, `adres`, `miejscowosc`, `telefon`, `email`) VALUES
-(1, '845-326-64-25', 'Marcin Piotrowski', 'Zakopianska 15', 'Kraków', 756274366, 'piotro131@onet.pl'),
-(2, '763-174-89-47', 'Ewelina Kowal', 'Lwowska 7', 'Wadowice', 567857856, 'kowal5233@wp.pl'),
-(3, '125-523-41-63', 'Piotr Ostrowski', 'Kolejowa 20', 'Skawina', 782834646, 'ostrow6421@gmail.com'),
-(4, '642-515-75-35', 'Gabriela Porzeczka', 'Floriańska 22', 'Andrychów', 489248725, 'porze754@o2.pl'),
-(5, '593-248-42-36', 'Wiktor Olechowski', 'Piastowska 8', 'Zator', 582648560, 'olec234@interia.pl'),
-(6, '425-642-15-23', 'Mateusz Wiśniewski', 'Słowackiego 19', 'Myślenice', 639273947, 'wisni213@gmail.com'),
-(7, '534-174-32-26', 'Igor Walczak', 'Jagiellońska 27', 'Kalwaria Zebrzydowska', 592758395, 'walcza5234@o2.pl'),
-(8, '314-215-21-46', 'Adam Zawadzki', 'Złota 32', 'Kraków', 858275925, 'zawad24@onet.pl'),
-(9, '514-632-37-25', 'Urszula Andrzejewska', 'Zielona 8', 'Sucha Beskidzka', 853928548, 'urszuand321@wp.pl'),
-(10, '327-324-65-21', 'Maciej Nowak', 'Spadzista 17', 'Wadowice', 829473183, 'nowa412@interia.pl');
+(1, '845-326-64-25', 'Marcin Piotrowski', 'Zakopianska 15', 'Kraków', '756274366', 'piotro131@onet.pl'),
+(2, '763-174-89-47', 'Ewelina Kowal', 'Lwowska 7', 'Wadowice', '567857856', 'kowal5233@wp.pl'),
+(3, '125-523-41-63', 'Piotr Ostrowski', 'Kolejowa 20', 'Skawina', '782834646', 'ostrow6421@gmail.com'),
+(4, '642-515-75-35', 'Gabriela Porzeczka', 'Floriańska 22', 'Andrychów', '489248725', 'porze754@o2.pl'),
+(5, '593-248-42-36', 'Wiktor Olechowski', 'Piastowska 8', 'Zator', '582648560', 'olec234@interia.pl'),
+(6, '425-642-15-23', 'Mateusz Wiśniewski', 'Słowackiego 19', 'Myślenice', '639273947', 'wisni213@gmail.com'),
+(7, '534-174-32-26', 'Igor Walczak', 'Jagiellońska 27', 'Kalwaria Zebrzydowska', '592758395', 'walcza5234@o2.pl'),
+(8, '314-215-21-46', 'Adam Zawadzki', 'Złota 32', 'Kraków', '858275925', 'zawad24@onet.pl'),
+(9, '514-632-37-25', 'Urszula Andrzejewska', 'Zielona 8', 'Sucha Beskidzka', '853928548', 'urszuand321@wp.pl'),
+(10, '327-324-65-21', 'Maciej Nowak', 'Spadzista 17', 'Wadowice', '829473183', 'nowa412@interia.pl');
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ CREATE TABLE `serwisanci` (
   `id` int(2) NOT NULL,
   `imie` varchar(20) NOT NULL,
   `nazwisko` varchar(20) NOT NULL,
-  `telefon` int(9) NOT NULL,
+  `telefon` varchar(9) NOT NULL,
   `nr_kasy` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -131,16 +131,16 @@ CREATE TABLE `serwisanci` (
 --
 
 INSERT INTO `serwisanci` (`id`, `imie`, `nazwisko`, `telefon`, `nr_kasy`) VALUES
-(1, 'Tomasz', 'Kowalski', 423151357, 'KF001'),
-(2, 'Wiktoria', 'Orzechowska', 624624629, 'KF002'),
-(3, 'Patrycja', 'Nowak', 785346125, 'KF003'),
-(4, 'Piotr', 'Szewczyk', 626546462, 'KF004'),
-(5, 'Robert', 'Szymański', 743462565, 'KF005'),
-(6, 'Marcin', 'Wiśniewski', 248463561, 'KF006'),
-(7, 'Alicja', 'Kowalczyk', 273456738, 'KF007'),
-(8, 'Katarzyna', 'Zalewska', 412554535, 'KF008'),
-(9, 'Marcin', 'Ostrowski', 436726462, 'KF009'),
-(10, 'Kamil', 'Nowakowski', 645624626, 'KF010');
+(1, 'Tomasz', 'Kowalski', '423151357', 'KF001'),
+(2, 'Wiktoria', 'Orzechowska', '624624629', 'KF002'),
+(3, 'Patrycja', 'Nowak', '785346125', 'KF003'),
+(4, 'Piotr', 'Szewczyk', '626546462', 'KF004'),
+(5, 'Robert', 'Szymański', '743462565', 'KF005'),
+(6, 'Marcin', 'Wiśniewski', '248463561', 'KF006'),
+(7, 'Alicja', 'Kowalczyk', '273456738', 'KF007'),
+(8, 'Katarzyna', 'Zalewska', '412554535', 'KF008'),
+(9, 'Marcin', 'Ostrowski', '436726462', 'KF009'),
+(10, 'Kamil', 'Nowakowski', '645624626', 'KF010');
 
 -- --------------------------------------------------------
 
