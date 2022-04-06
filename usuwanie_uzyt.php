@@ -16,8 +16,10 @@
 	if(mysqli_connect_errno()) header('Location: uzytkownicy.php');
 	else
 	{
-		
+		$id = $_POST['id'];
+		echo $id;
 		$kwerenda="DELETE FROM uzytkownicy WHERE id=$id";
+		mysqli_query($conn, $kwerenda);
 		header('Location: uzytkownicy.php');
 	}
 	mysqli_close($conn);

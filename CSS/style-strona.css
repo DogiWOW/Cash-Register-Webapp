@@ -21,7 +21,7 @@ body.menu-preload *{
 
 
 html, body{
-    min-height: 99.5%;
+    min-height: 98.5%;
     margin: 5px;
     background-image: url(../Images/logo.png), url(../Images/logo.png), linear-gradient(to bottom right, var(--section-gradient-1), var(--section-gradient-2));
     background-attachment: fixed,fixed,fixed;

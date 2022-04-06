@@ -44,7 +44,7 @@
     }
     function usuwanie()
     {
-        echo "Usuwanie już wkrótce!";
+        
     }
 ?>
 <!DOCTYPE html>
@@ -83,7 +83,7 @@
                     $kwerenda = "SELECT * FROM uzytkownicy WHERE administrator!=1";
                     if($wynik=mysqli_query($conn, $kwerenda)){
                     while($row=mysqli_fetch_array($wynik)){
-                        echo '<tr><td>'.$row['imie'].'</td><td>'.$row['nazwisko'].'</td><td>'.$row['email'].'</td><td><form method="POST"><input type="submit" value="USUŃ" name="usuwanie" /></form></td></tr>';
+                        echo '<tr><td>'.$row['imie'].'</td><td>'.$row['nazwisko'].'</td><td>'.$row['email'].'</td><td><form method="POST" action="usuwanie_uzyt.php"><input type="submit" value="USUŃ" name="usuwanie"><input type="hidden" name="id" value="'.$row['id'].'"></form></td></tr>';
                     }
                 }
                 mysqli_close($conn);
@@ -108,12 +108,7 @@
         switch($polecenie)
         {
             case 'Dodaj użytkownika': formularz_dodawania(); break;
-            case 'USUŃ':  { usuwanie();
-                if(isset($_POST['dodajuzytkownika']))
-                {
-                    formularz_dodawania();
-                }
-                break;}
+            
         }
         if(isset($_SESSION['bladc'])) 
         {
