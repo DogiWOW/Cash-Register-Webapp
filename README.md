@@ -3,9 +3,9 @@
 Fullstack web application for a school project made using PHP, MYSQL and JS.
 
 ## READ ME
-The whole application is in polish. I'll maybe translate it in the future.
-To use the application you need to download something that can run APACHE (for example XAMPP) and MySQL. 
-Import the "projekt.sql" file to your SQL databases.
+The whole application is in polish. I'll maybe translate it in the future.  
+To use the application you need to download something that can run APACHE (for example XAMPP) and MySQL.  
+Import the "projekt.sql" file to your SQL databases.  
 As login credentials use one of the users in the database. I recommend the one with admin privilages.
 
 ## Site pages
