@@ -2,7 +2,7 @@
 
 Fullstack web application for a school project made using PHP, MYSQL and JS.
 
-## READ ME
+## IMPORTANT
 The whole application is in polish. I'll maybe translate it in the future.  
 To use the application you need to download something that can run APACHE (for example XAMPP) and MySQL.  
 Import the "projekt.sql" file to your SQL databases.  
