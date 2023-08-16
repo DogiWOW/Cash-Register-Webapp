@@ -11,7 +11,7 @@
 	
 	$host = "localhost"; //adres hosta
 	$name = "root";	//nazwa użytkownika
-	$pass = "";	//hasło, jeśli nie ma zostawić puste
+	$pass = "123";	//hasło, jeśli nie ma zostawić puste
 	$dbname = "projekt"; //nazwa bazy danych
 	$conn = mysqli_connect($host, $name, $pass, $dbname); //połączenie z bazą danych
 	
